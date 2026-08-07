@@ -222,14 +222,17 @@
   .mail.head-m .tt{font-size:14px;font-weight:800;letter-spacing:-.35px}
 
   /* archivio */
-  .arc{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .num{display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
+  .arc{margin-top:44px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .num{flex:1 1 280px;max-width:340px;display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
     background:var(--card);transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
   .num:hover{border-color:rgba(139,124,246,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
   .num .d{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet-lt)}
   .num .t{margin-top:11px;font-size:16px;font-weight:650;line-height:1.38;letter-spacing:-.25px}
   .num .g{margin-top:14px;font-size:13px;color:var(--dim);display:flex;align-items:center;gap:6px}
   .num:hover .g{color:var(--violet-lt)}
+  .tutti{margin-top:26px;text-align:center;font-size:14.5px}
+  .tutti a{color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.3);padding-bottom:2px}
+  .tutti a:hover{border-bottom-color:var(--violet-lt)}
   .arc-empty{margin-top:34px;padding:34px 28px;border:1px dashed var(--line2);border-radius:18px;
     text-align:center;font-size:15px;color:var(--dim)}
 
@@ -281,8 +284,6 @@
     .checks{max-width:420px;margin-left:auto;margin-right:auto;text-align:left}
     .cards{grid-template-columns:1fr 1fr}
     .card:last-child{grid-column:1/-1}
-    .arc{grid-template-columns:1fr 1fr}
-    .num:last-child{grid-column:1/-1}
   }
   /* ═══════════ telefono ═══════════ */
   @media(max-width:640px){
@@ -306,8 +307,8 @@
     .cards{grid-template-columns:1fr;gap:13px;margin-top:38px}
     .card{padding:26px 24px 28px}
     .card:last-child{grid-column:auto}
-    .arc{grid-template-columns:1fr;margin-top:32px}
-    .num:last-child{grid-column:auto}
+    .arc{margin-top:32px}
+    .num{max-width:none}
     .show{margin-top:40px}
     .phone{max-width:290px}
     .q summary{padding:20px 2px;font-size:15.5px}
@@ -484,6 +485,7 @@
         <a href="ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.34)">a questo link</a>.</p>
     </div>
     <div class="arc" id="arc" hidden></div>
+    <p class="tutti rise" id="tutti" hidden><a href="archivio/">Vedi tutti i numeri &nbsp;&rarr;</a></p>
     <div class="arc-empty rise" id="arc-empty">Il primo numero non è ancora uscito. Iscriviti ora e ti arriva stasera alle 18.</div>
   </section>
 
@@ -638,6 +640,8 @@
         if (occhio) occhio.observe(a); else a.classList.add('seen');
       });
       box.hidden = false;
+      var tutti = document.getElementById('tutti');
+      tutti.hidden = false; if (occhio) occhio.observe(tutti); else tutti.classList.add('seen');
       document.getElementById('arc-empty').remove();
     })
     .catch(function(){ /* nessun numero ancora pubblicato: resta il messaggio di attesa */ });
