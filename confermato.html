@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sei dentro · Andrea Sforna AI</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#05050A;--ink:#fff;--mute:#9295AD;--dim:#5C5F75;--violet:#6C5CE7;--cyan:#06B6D4;--line:rgba(255,255,255,.08)}
+  html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body{background:var(--bg);color:var(--ink);min-height:100vh;padding:0 24px;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;overflow-x:hidden;text-align:center}
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .aurora::before,.aurora::after{content:'';position:absolute;border-radius:50%;filter:blur(120px)}
+  .aurora::before{width:720px;height:720px;top:-300px;left:50%;transform:translateX(-58%);
+    background:radial-gradient(circle,rgba(108,92,231,.32) 0%,rgba(108,92,231,0) 68%)}
+  .aurora::after{width:600px;height:600px;top:140px;left:50%;transform:translateX(22%);
+    background:radial-gradient(circle,rgba(6,182,212,.18) 0%,rgba(6,182,212,0) 68%)}
+  .shell{position:relative;z-index:1;max-width:560px}
+  .mark{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .kicker{margin-top:6px;font-size:9.5px;font-weight:700;letter-spacing:4.2px;color:#8B7CF6;text-transform:uppercase}
+  .tick{margin:52px auto 0;width:74px;height:74px;border-radius:50%;
+    background:linear-gradient(135deg,#6C5CE7,#06B6D4);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 44px -14px rgba(108,92,231,.9)}
+  .tick svg{width:34px;height:34px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  h1{margin-top:34px;font-size:clamp(32px,6vw,50px);line-height:1.08;font-weight:800;letter-spacing:-1.8px}
+  h1 .grad{background:linear-gradient(100deg,#A78BFA 0%,#6C5CE7 40%,#06B6D4 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  p{margin-top:20px;font-size:17px;line-height:1.68;color:var(--mute)}
+  .box{margin-top:38px;padding:22px 26px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.028)}
+  .box span{color:#C6C8DA;font-weight:600}
+  footer{margin-top:52px;font-size:12px;color:#3F4256;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="aurora"></div>
+<div class="shell">
+  <div class="mark">ANDREA SFORNA</div>
+  <div class="kicker">Artificial Intelligence</div>
+
+  <div class="tick"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div>
+
+  <h1>Sei dentro.<br /><span class="grad">A domani alle 18.</span></h1>
+  <p>Iscrizione confermata. Da qui in poi ricevi un'email al giorno con quello che è successo davvero nell'intelligenza artificiale.</p>
+
+  <div class="box"><span>Un consiglio:</span> sposta la prima email nella posta in arrivo se la trovi tra le promozioni. Così le successive arrivano dove devono.</div>
+
+  <footer>Ti puoi disiscrivere in qualsiasi momento dal link in fondo a ogni email.</footer>
+</div>
+</body>
+</html>
