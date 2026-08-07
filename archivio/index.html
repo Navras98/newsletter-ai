@@ -33,6 +33,8 @@
   .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
   .wrap{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+  /* la colonna di lettura resta stretta: righe larghe un metro non si leggono */
+  .colonna{max-width:900px}
 
   .nav{position:sticky;top:0;z-index:50;background:rgba(5,5,10,.74);
     backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
@@ -59,7 +61,8 @@
   @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
   .lead{margin-top:18px;font-size:17px;line-height:1.68;color:var(--mute);max-width:560px}
 
-  .lista{margin:52px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(430px,100%),1fr));gap:18px}
+  /* colonna unica: con un numero solo o con cinquanta l'archivio resta in equilibrio */
+  .lista{margin:52px 0 0;display:grid;grid-template-columns:1fr;gap:16px}
   .num{display:flex;align-items:center;gap:22px;text-decoration:none;padding:24px 26px;
     border:1px solid var(--line);border-radius:18px;background:var(--card);
     transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
@@ -133,7 +136,7 @@
   </div>
 </nav>
 
-<div class="wrap">
+<div class="wrap colonna">
   <header class="top">
     <div class="eyebrow rise">Archivio</div>
     <h1 class="rise">Tutti i numeri,<br /><span class="grad">dal primo all’ultimo.</span></h1>
