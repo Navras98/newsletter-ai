@@ -20,7 +20,7 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
     --bg:#05050A; --bg2:#07070E;
-    --ink:#FFFFFF; --mute:#A0A3BA; --dim:#63667D; --faint:#3E4155;
+    --ink:#FFFFFF; --mute:#A9ACC2; --dim:#7B7E96; --faint:#565971;
     --violet:#6C5CE7; --violet-lt:#A78BFA; --cyan:#22D3EE;
     --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.12);
     --card:rgba(255,255,255,.026);
@@ -112,6 +112,8 @@
   .lead b{color:#D5D7E6;font-weight:600}
 
   /* modulo */
+  /* campo trappola: invisibile a chi legge, i robot lo riempiono e vengono scartati */
+  .tp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
   .form-box{margin:38px auto 0;max-width:512px;width:100%}
   form{display:flex;gap:10px;position:relative}
   .field{flex:1 1 auto;min-width:0;position:relative}
@@ -185,7 +187,7 @@
     border:1px solid rgba(139,124,246,.26);background:rgba(108,92,231,.11);position:relative}
   .ico svg{width:20px;height:20px;stroke:#A78BFA;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin-top:20px;font-size:18px;font-weight:700;letter-spacing:-.32px;position:relative}
-  .card p{margin-top:10px;font-size:14.8px;line-height:1.7;color:var(--dim);position:relative}
+  .card p{margin-top:10px;font-size:14.8px;line-height:1.7;color:var(--mute);position:relative}
 
   /* anteprima */
   .show{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -370,6 +372,7 @@
           <input type="email" id="email" name="email" placeholder="La tua email" required autocomplete="email"
                  inputmode="email" aria-label="Il tuo indirizzo email" />
         </div>
+        <input type="text" name="azienda" class="tp" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button class="cta" type="submit" id="btn">Iscriviti gratis</button>
       </form>
       <p class="fine"><span>Solo quando conta</span><span>nessuna pubblicità</span><span>annulli l’iscrizione con un clic</span></p>
@@ -532,6 +535,7 @@
             <input type="email" id="email2" name="email" placeholder="La tua email" required autocomplete="email"
                    inputmode="email" aria-label="Il tuo indirizzo email" />
           </div>
+          <input type="text" name="azienda" class="tp" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button class="cta" type="submit" id="btn2">Iscriviti gratis</button>
         </form>
         <p class="fine"><span>Solo quando conta</span><span>nessuna pubblicità</span><span>annulli l’iscrizione con un clic</span></p>
@@ -677,7 +681,8 @@
       msg.className = 'msg'; msg.textContent = '';
       fetch(ISCRIZIONE, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ email: email, origine: 'sito' })
+        body: JSON.stringify({ email: email, origine: 'sito',
+                               azienda: (form.querySelector('.tp') || {}).value || '' })
       })
       .then(function(r){ return r.json().catch(function(){ return null; }).then(function(d){ return { r:r, d:d }; }); })
       .then(function(esito){
