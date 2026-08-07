@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andrea Sforna · AI — la newsletter</title>
+<meta name="description" content="Ogni giorno, quello che conta davvero nell'intelligenza artificiale. Senza rumore." />
+<meta property="og:title" content="Andrea Sforna · AI" />
+<meta property="og:description" content="Ogni giorno, quello che conta davvero nell'intelligenza artificiale." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#05050A; --ink:#FFFFFF; --mute:#9295AD; --dim:#5C5F75;
+    --violet:#6C5CE7; --violet-lt:#8B7CF6; --cyan:#06B6D4;
+    --line:rgba(255,255,255,.08); --card:rgba(255,255,255,.028);
+  }
+  html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body{
+    background:var(--bg); color:var(--ink); min-height:100vh;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+    padding:0 24px; position:relative; overflow-x:hidden;
+  }
+  /* aurora di fondo */
+  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .aurora::before,.aurora::after{content:'';position:absolute;border-radius:50%;filter:blur(120px)}
+  .aurora::before{width:760px;height:760px;top:-330px;left:50%;transform:translateX(-58%);
+    background:radial-gradient(circle,rgba(108,92,231,.34) 0%,rgba(108,92,231,0) 68%)}
+  .aurora::after{width:620px;height:620px;top:120px;left:50%;transform:translateX(20%);
+    background:radial-gradient(circle,rgba(6,182,212,.20) 0%,rgba(6,182,212,0) 68%)}
+  .grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 12%,#000 20%,transparent 78%);
+            mask-image:radial-gradient(ellipse 90% 55% at 50% 12%,#000 20%,transparent 78%)}
+
+  .shell{position:relative;z-index:1;width:100%;max-width:660px;display:flex;flex-direction:column;align-items:center}
+
+  /* testata */
+  header{padding:52px 0 0;text-align:center}
+  .mark{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .kicker{margin-top:6px;font-size:9.5px;font-weight:700;letter-spacing:4.2px;color:var(--violet-lt);text-transform:uppercase}
+
+  /* eyebrow */
+  .pill{margin:66px 0 30px;display:inline-flex;align-items:center;gap:9px;
+    padding:7px 15px 7px 11px;border:1px solid var(--line);border-radius:999px;
+    background:var(--card);font-size:12px;color:var(--mute);letter-spacing:.2px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);
+    box-shadow:0 0 0 0 rgba(6,182,212,.6);animation:pulse 2.6s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(6,182,212,.5)}70%{box-shadow:0 0 0 9px rgba(6,182,212,0)}100%{box-shadow:0 0 0 0 rgba(6,182,212,0)}}
+
+  h1{font-size:clamp(38px,7.2vw,66px);line-height:1.04;font-weight:800;letter-spacing:-2.4px;text-align:center}
+  h1 .grad{background:linear-gradient(100deg,#A78BFA 0%,#6C5CE7 38%,#06B6D4 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{margin:24px auto 0;max-width:472px;text-align:center;font-size:17.5px;line-height:1.68;color:var(--mute)}
+
+  /* modulo */
+  form{margin-top:42px;width:100%;max-width:472px;display:flex;gap:10px}
+  input[type=email]{flex:1;min-width:0;height:56px;padding:0 20px;border-radius:14px;
+    border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);
+    font-family:inherit;font-size:15.5px;outline:none;transition:border-color .22s,background .22s,box-shadow .22s}
+  input[type=email]::placeholder{color:#5A5D73}
+  input[type=email]:focus{border-color:rgba(139,124,246,.62);background:rgba(255,255,255,.06);
+    box-shadow:0 0 0 4px rgba(108,92,231,.14)}
+  button{height:56px;padding:0 27px;border:0;border-radius:14px;cursor:pointer;white-space:nowrap;
+    font-family:inherit;font-size:15px;font-weight:650;color:#fff;letter-spacing:.1px;
+    background:linear-gradient(100deg,#6C5CE7 0%,#7C5CE7 55%,#06B6D4 190%);
+    box-shadow:0 10px 30px -10px rgba(108,92,231,.75);
+    transition:transform .16s ease,box-shadow .22s ease,filter .22s}
+  button:hover{transform:translateY(-1.5px);filter:brightness(1.07);box-shadow:0 16px 40px -12px rgba(108,92,231,.9)}
+  button:active{transform:translateY(0)}
+  .note{margin-top:16px;font-size:12.5px;color:var(--dim);text-align:center;letter-spacing:.1px}
+
+  /* esito */
+  .done{display:none;margin-top:42px;width:100%;max-width:472px;text-align:center;
+    padding:28px 26px;border:1px solid rgba(6,182,212,.26);border-radius:16px;background:rgba(6,182,212,.05)}
+  .done h3{font-size:17px;font-weight:700;margin-bottom:8px}
+  .done p{font-size:14.5px;line-height:1.62;color:var(--mute)}
+  body.sent form,body.sent .note{display:none}
+  body.sent .done{display:block}
+  .oops{display:none;margin-top:16px;width:100%;max-width:472px;text-align:center;
+    font-size:13.5px;line-height:1.6;color:#F0A0A0}
+  body.err .oops{display:block}
+
+  /* tre punti */
+  .facts{margin:82px 0 0;width:100%;display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .fact{background:#07070D;padding:26px 22px}
+  .fact .n{font-size:10px;font-weight:700;letter-spacing:2.4px;color:var(--violet-lt);text-transform:uppercase}
+  .fact h4{margin-top:11px;font-size:15px;font-weight:650;letter-spacing:-.2px}
+  .fact p{margin-top:7px;font-size:13.5px;line-height:1.62;color:var(--dim)}
+
+  footer{margin:74px 0 54px;text-align:center;font-size:12px;color:#3F4256;line-height:1.8}
+  footer a{color:#5C5F75;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.09)}
+
+  @media(max-width:620px){
+    .facts{grid-template-columns:1fr}
+    form{flex-direction:column}
+    button{width:100%}
+    h1{letter-spacing:-1.5px}
+    .pill{margin-top:48px}
+  }
+</style>
+</head>
+<body>
+<div class="aurora"></div><div class="grid"></div>
+
+<div class="shell">
+  <header>
+    <div class="mark">ANDREA SFORNA</div>
+    <div class="kicker">Artificial Intelligence</div>
+  </header>
+
+  <div class="pill"><span class="dot"></span> Ogni giorno, alle 18:00</div>
+
+  <h1>L'intelligenza artificiale,<br /><span class="grad">senza rumore.</span></h1>
+
+  <p class="sub">Quello che è successo davvero oggi nell'AI: modelli, strumenti, prezzi e cosa cambia per te. Letto, filtrato e scritto in modo che si capisca.</p>
+
+  <form id="f" novalidate>
+    <input type="email" id="email" placeholder="latua@email.com" required autocomplete="email" />
+    <button type="submit">Iscriviti gratis</button>
+  </form>
+  <p class="note">Niente spam. Un'email al giorno. Ti disiscrivi con un clic.</p>
+
+  <p class="oops">Non sono riuscito a registrarti adesso. Riprova fra qualche minuto.</p>
+
+  <div class="done">
+    <h3>Controlla la posta ✉️</h3>
+    <p>Ti ho mandato un'email di conferma. Apri e clicca il link: da domani sei dentro.</p>
+  </div>
+
+  <section class="facts">
+    <div class="fact"><div class="n">01</div><h4>Solo fatti</h4><p>Fonti vere, nessuna previsione inventata, nessuno sponsor mascherato.</p></div>
+    <div class="fact"><div class="n">02</div><h4>Cinque minuti</h4><p>Il tempo di un caffè. Se una notizia non ti serve, non la trovi qui.</p></div>
+    <div class="fact"><div class="n">03</div><h4>Zero rumore</h4><p>Un'email al giorno e basta. Il tuo indirizzo non va da nessuna parte.</p></div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Andrea Sforna · <a href="#">Privacy</a><br />
+    Ti puoi disiscrivere in qualsiasi momento dal link in fondo a ogni email.
+  </footer>
+</div>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  var ISCRIZIONE = 'https://macbook-pro-di-apple.tailb93c0a.ts.net:10000/webhook/iscrizione';
+
+  document.getElementById('f').addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+      document.getElementById('email').focus(); return;
+    }
+    var btn = this.querySelector('button'), testo = btn.textContent;
+    btn.textContent = 'Un attimo…'; btn.disabled = true;
+    document.body.classList.remove('err');
+    try{
+      var r = await fetch(ISCRIZIONE, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: email, origine: 'landing' })
+      });
+      if(!r.ok) throw new Error(r.status);
+      document.body.classList.add('sent');
+    }catch(err){
+      // niente falsi "iscritto!": se non è arrivata, lo diciamo
+      document.body.classList.add('err');
+      btn.textContent = testo; btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
