@@ -2,183 +2,686 @@
 <html lang="it">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Andrea Sforna · AI — La newsletter quotidiana sull'intelligenza artificiale</title>
-<meta name="description" content="Una selezione quotidiana di ciò che accade nell'intelligenza artificiale: modelli, strumenti, mercato. Ogni giorno alle 18:00." />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Andrea Sforna · AI — Le notizie sull’intelligenza artificiale, ogni sera alle 18</title>
+<meta name="description" content="Ogni sera alle 18 ti arriva un’email con le notizie sull’intelligenza artificiale che contano davvero, spiegate in modo che si capiscano. Cinque minuti, gratis." />
+<meta name="theme-color" content="#05050A" />
+<link rel="canonical" href="https://navras98.github.io/newsletter-ai/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://navras98.github.io/newsletter-ai/" />
 <meta property="og:title" content="Andrea Sforna · AI" />
-<meta property="og:description" content="Una selezione quotidiana di ciò che accade nell'intelligenza artificiale. Ogni giorno alle 18:00." />
+<meta property="og:description" content="Le notizie sull’intelligenza artificiale che contano davvero. Ogni sera alle 18, in cinque minuti." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236C5CE7'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#05050A; --ink:#FFFFFF; --mute:#9295AD; --dim:#5C5F75;
-    --violet:#6C5CE7; --violet-lt:#8B7CF6; --cyan:#06B6D4;
-    --line:rgba(255,255,255,.08); --card:rgba(255,255,255,.028);
+    --bg:#05050A; --bg2:#07070E;
+    --ink:#FFFFFF; --mute:#A0A3BA; --dim:#63667D; --faint:#3E4155;
+    --violet:#6C5CE7; --violet-lt:#A78BFA; --cyan:#22D3EE;
+    --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.12);
+    --card:rgba(255,255,255,.026);
+    --pad:24px; --max:1080px;
   }
-  html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
   body{
-    background:var(--bg); color:var(--ink); min-height:100vh;
+    background:var(--bg); color:var(--ink); overflow-x:hidden; position:relative;
     font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-    display:flex; flex-direction:column; align-items:center;
-    padding:0 24px; position:relative; overflow-x:hidden;
+    font-size:16px; line-height:1.6;
   }
-  /* aurora di fondo */
-  .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-  .aurora::before,.aurora::after{content:'';position:absolute;border-radius:50%;filter:blur(120px)}
-  .aurora::before{width:760px;height:760px;top:-330px;left:50%;transform:translateX(-58%);
-    background:radial-gradient(circle,rgba(108,92,231,.34) 0%,rgba(108,92,231,0) 68%)}
-  .aurora::after{width:620px;height:620px;top:120px;left:50%;transform:translateX(20%);
-    background:radial-gradient(circle,rgba(6,182,212,.20) 0%,rgba(6,182,212,0) 68%)}
-  .grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
-    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
-                     linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-    background-size:64px 64px;
-    -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 12%,#000 20%,transparent 78%);
-            mask-image:radial-gradient(ellipse 90% 55% at 50% 12%,#000 20%,transparent 78%)}
+  ::selection{background:rgba(108,92,231,.42)}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
 
-  .shell{position:relative;z-index:1;width:100%;max-width:660px;display:flex;flex-direction:column;align-items:center}
+  /* ═══════════ fondale ═══════════ */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .blob{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform}
+  .b1{width:min(820px,150vw);aspect-ratio:1;top:-38vh;left:50%;
+      background:radial-gradient(circle,rgba(108,92,231,.36),rgba(108,92,231,0) 66%);
+      animation:drift1 24s ease-in-out infinite}
+  .b2{width:min(660px,130vw);aspect-ratio:1;top:4vh;left:50%;
+      background:radial-gradient(circle,rgba(34,211,238,.20),rgba(34,211,238,0) 66%);
+      animation:drift2 30s ease-in-out infinite}
+  .b3{width:min(700px,140vw);aspect-ratio:1;top:118vh;left:50%;
+      background:radial-gradient(circle,rgba(167,139,250,.14),rgba(167,139,250,0) 68%);
+      animation:drift1 34s ease-in-out infinite reverse}
+  @keyframes drift1{
+    0%,100%{transform:translate(-58%,0) scale(1)}
+    50%{transform:translate(-46%,5vh) scale(1.12)}}
+  @keyframes drift2{
+    0%,100%{transform:translate(14%,0) scale(1)}
+    50%{transform:translate(-6%,7vh) scale(1.16)}}
+  .mesh{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:68px 68px;
+    -webkit-mask-image:radial-gradient(ellipse 92% 50% at 50% 8%,#000 18%,transparent 76%);
+            mask-image:radial-gradient(ellipse 92% 50% at 50% 8%,#000 18%,transparent 76%)}
+  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  /* testata */
-  header{padding:52px 0 0;text-align:center}
-  .mark{font-size:15px;font-weight:800;letter-spacing:-.2px}
-  .kicker{margin-top:6px;font-size:9.5px;font-weight:700;letter-spacing:4.2px;color:var(--violet-lt);text-transform:uppercase}
+  .wrap{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
-  /* eyebrow */
-  .pill{margin:66px 0 30px;display:inline-flex;align-items:center;gap:9px;
-    padding:7px 15px 7px 11px;border:1px solid var(--line);border-radius:999px;
-    background:var(--card);font-size:12px;color:var(--mute);letter-spacing:.2px}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);
-    box-shadow:0 0 0 0 rgba(6,182,212,.6);animation:pulse 2.6s ease-out infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(6,182,212,.5)}70%{box-shadow:0 0 0 9px rgba(6,182,212,0)}100%{box-shadow:0 0 0 0 rgba(6,182,212,0)}}
+  /* ═══════════ barra ═══════════ */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s}
+  .nav::after{content:'';position:absolute;inset:0;border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.on{background:rgba(5,5,10,.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
+  .nav.on::after{border-bottom-color:var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+  .logo-b{width:30px;height:30px;border-radius:9px;flex-shrink:0;
+    background:linear-gradient(135deg,#6C5CE7,#22D3EE);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:900;letter-spacing:-.6px;color:#fff;
+    box-shadow:0 6px 18px -6px rgba(108,92,231,.9)}
+  .logo-t{font-size:14.5px;font-weight:700;letter-spacing:-.25px;white-space:nowrap}
+  .logo-t i{font-style:normal;color:var(--dim);font-weight:500}
+  .nav-r{display:flex;align-items:center;gap:6px}
+  .nlink{padding:8px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--mute);
+    text-decoration:none;transition:color .2s,background .2s;white-space:nowrap}
+  .nlink:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  .nbtn{padding:9px 17px;border-radius:10px;font-size:13.5px;font-weight:600;color:#fff;
+    text-decoration:none;white-space:nowrap;
+    background:linear-gradient(120deg,#6C5CE7,#7A5AE8 60%,#3BA9D9);
+    box-shadow:0 8px 22px -10px rgba(108,92,231,.95);
+    transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .2s}
+  .nbtn:hover{transform:translateY(-1.5px);filter:brightness(1.09)}
 
-  h1{font-size:clamp(38px,7.2vw,66px);line-height:1.04;font-weight:800;letter-spacing:-2.4px;text-align:center}
-  h1 .grad{background:linear-gradient(100deg,#A78BFA 0%,#6C5CE7 38%,#06B6D4 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .sub{margin:24px auto 0;max-width:472px;text-align:center;font-size:17.5px;line-height:1.68;color:var(--mute)}
+  /* ═══════════ apertura ═══════════ */
+  .hero{padding:132px 0 0;text-align:center;position:relative}
+  .badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 11px;
+    border:1px solid var(--line2);border-radius:999px;background:var(--card);
+    font-size:12.5px;font-weight:500;color:var(--mute);letter-spacing:.1px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .badge b{color:#D8DAEA;font-weight:600}
+  .live{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;
+    box-shadow:0 0 0 0 rgba(34,211,238,.65);animation:beat 2.8s ease-out infinite}
+  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}
+    70%{box-shadow:0 0 0 10px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+
+  h1{margin-top:30px;font-size:clamp(40px,7.4vw,76px);line-height:1.02;font-weight:800;
+    letter-spacing:-.038em;max-width:15ch;margin-left:auto;margin-right:auto}
+  .grad{background:linear-gradient(105deg,#C4B5FD 0%,#8B7CF6 32%,#6C5CE7 58%,#22D3EE 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;animation:slide 9s ease-in-out infinite}
+  @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .lead{margin:26px auto 0;max-width:600px;font-size:clamp(16.5px,2.1vw,19px);line-height:1.66;color:var(--mute)}
+  .lead b{color:#D5D7E6;font-weight:600}
 
   /* modulo */
-  form{margin-top:42px;width:100%;max-width:472px;display:flex;gap:10px}
-  input[type=email]{flex:1;min-width:0;height:56px;padding:0 20px;border-radius:14px;
-    border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);
-    font-family:inherit;font-size:15.5px;outline:none;transition:border-color .22s,background .22s,box-shadow .22s}
-  input[type=email]::placeholder{color:#5A5D73}
-  input[type=email]:focus{border-color:rgba(139,124,246,.62);background:rgba(255,255,255,.06);
-    box-shadow:0 0 0 4px rgba(108,92,231,.14)}
-  button{height:56px;padding:0 27px;border:0;border-radius:14px;cursor:pointer;white-space:nowrap;
-    font-family:inherit;font-size:15px;font-weight:650;color:#fff;letter-spacing:.1px;
-    background:linear-gradient(100deg,#6C5CE7 0%,#7C5CE7 55%,#06B6D4 190%);
-    box-shadow:0 10px 30px -10px rgba(108,92,231,.75);
-    transition:transform .16s ease,box-shadow .22s ease,filter .22s}
-  button:hover{transform:translateY(-1.5px);filter:brightness(1.07);box-shadow:0 16px 40px -12px rgba(108,92,231,.9)}
-  button:active{transform:translateY(0)}
-  .note{margin-top:16px;font-size:12.5px;color:var(--dim);text-align:center;letter-spacing:.1px}
+  .form-box{margin:38px auto 0;max-width:512px;width:100%}
+  form{display:flex;gap:10px;position:relative}
+  .field{flex:1 1 auto;min-width:0;position:relative}
+  input[type=email]{width:100%;height:56px;padding:0 20px;border-radius:14px;
+    border:1px solid var(--line2);background:rgba(255,255,255,.045);color:var(--ink);
+    font-family:inherit;font-size:16px;outline:none;
+    transition:border-color .22s,background .22s,box-shadow .22s}
+  input[type=email]::placeholder{color:#5B5E75}
+  input[type=email]:focus{border-color:rgba(139,124,246,.7);background:rgba(255,255,255,.065);
+    box-shadow:0 0 0 4px rgba(108,92,231,.15)}
+  .cta{flex:0 0 auto;height:56px;padding:0 28px;border:0;border-radius:14px;cursor:pointer;
+    font-family:inherit;font-size:15.5px;font-weight:600;color:#fff;letter-spacing:.1px;white-space:nowrap;
+    background:linear-gradient(120deg,#6C5CE7,#7A5AE8 55%,#3BA9D9);
+    box-shadow:0 12px 32px -12px rgba(108,92,231,.95);
+    transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .22s,box-shadow .22s}
+  .cta:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.09);
+    box-shadow:0 18px 42px -14px rgba(108,92,231,1)}
+  .cta:active:not(:disabled){transform:translateY(0)}
+  .cta:disabled{opacity:.62;cursor:default}
+  .fine{margin-top:15px;font-size:13px;color:var(--dim);display:flex;align-items:center;
+    justify-content:center;gap:6px 10px;flex-wrap:wrap}
+  .fine span{white-space:nowrap;display:inline-flex;align-items:center;gap:10px}
+  .fine span+span::before{content:'·';color:var(--faint)}
 
-  /* esito */
-  .done{display:none;margin-top:42px;width:100%;max-width:472px;text-align:center;
-    padding:28px 26px;border:1px solid rgba(6,182,212,.26);border-radius:16px;background:rgba(6,182,212,.05)}
-  .done h3{font-size:17px;font-weight:700;margin-bottom:8px}
-  .done p{font-size:14.5px;line-height:1.62;color:var(--mute)}
-  body.sent form,body.sent .note{display:none}
-  body.sent .done{display:block}
-  .oops{display:none;margin-top:16px;width:100%;max-width:472px;text-align:center;
-    font-size:13.5px;line-height:1.6;color:#F0A0A0}
-  body.err .oops{display:block}
+  .msg{margin-top:18px;font-size:14px;line-height:1.6;display:none;border-radius:12px;padding:14px 18px;text-align:left}
+  .msg.err{display:block;color:#FCA5A5;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.24)}
+  .esito{display:none;margin:38px auto 0;max-width:512px;padding:30px 28px;text-align:left;
+    border:1px solid rgba(34,211,238,.26);border-radius:18px;
+    background:linear-gradient(160deg,rgba(34,211,238,.07),rgba(108,92,231,.05))}
+  .esito h3{font-size:18px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:11px}
+  .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,#6C5CE7,#22D3EE);display:flex;align-items:center;justify-content:center}
+  .esito h3 svg{width:14px;height:14px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .esito p{margin-top:12px;font-size:14.8px;line-height:1.68;color:var(--mute)}
+  .esito p+p{margin-top:9px}
+  body.ok .form-box{display:none}
+  body.ok .esito{display:block;animation:pop .5s cubic-bezier(.2,.9,.3,1.1) both}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
 
-  /* tre punti */
-  .facts{margin:82px 0 0;width:100%;display:grid;grid-template-columns:repeat(3,1fr);
-    gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .fact{background:#07070D;padding:26px 22px}
-  .fact .n{font-size:10px;font-weight:700;letter-spacing:2.4px;color:var(--violet-lt);text-transform:uppercase}
-  .fact h4{margin-top:11px;font-size:15px;font-weight:650;letter-spacing:-.2px}
-  .fact p{margin-top:7px;font-size:13.5px;line-height:1.62;color:var(--dim)}
+  /* nastro argomenti */
+  .strip{margin-top:66px;position:relative;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .strip-t{font-size:10.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;
+    color:var(--faint);text-align:center;margin-bottom:20px}
+  .track{display:flex;gap:12px;width:max-content;animation:run 42s linear infinite}
+  .strip:hover .track{animation-play-state:paused}
+  .tag{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);
+    font-size:13px;color:var(--dim);white-space:nowrap;font-weight:500}
+  @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  footer{margin:74px 0 54px;text-align:center;font-size:12px;color:#3F4256;line-height:1.8}
-  footer a{color:#5C5F75;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.09)}
+  /* ═══════════ sezioni ═══════════ */
+  section{position:relative;z-index:2}
+  .sec{padding:110px 0 0}
+  .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;color:var(--violet-lt)}
+  h2{margin-top:14px;font-size:clamp(29px,4.4vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.032em}
+  .sub{margin-top:16px;font-size:16.5px;line-height:1.68;color:var(--mute);max-width:560px}
+  .head{text-align:center}
+  .head .sub{margin-left:auto;margin-right:auto}
 
-  @media(max-width:620px){
-    .facts{grid-template-columns:1fr;margin-top:64px}
-    form{flex-direction:column;gap:12px}
-    /* in colonna il flex governa l'altezza: va disattivato o il campo si schiaccia */
-    input[type=email]{flex:0 0 auto;width:100%;height:54px}
-    button{width:100%;height:54px}
-    h1{letter-spacing:-1.4px;font-size:clamp(34px,9.4vw,44px)}
-    .sub{font-size:16.5px;margin-top:20px}
-    .pill{margin-top:46px;margin-bottom:26px}
-    header{padding-top:40px}
-    footer{margin:56px 0 44px}
+  /* tre carte */
+  .cards{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{position:relative;padding:32px 28px 34px;border:1px solid var(--line);border-radius:20px;
+    background:linear-gradient(170deg,rgba(255,255,255,.042),rgba(255,255,255,.014));
+    overflow:hidden;transition:border-color .3s,transform .3s cubic-bezier(.2,.9,.3,1)}
+  .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(108,92,231,.16),transparent 62%)}
+  .card:hover{border-color:rgba(139,124,246,.3);transform:translateY(-4px)}
+  .card:hover::before{opacity:1}
+  .ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(139,124,246,.26);background:rgba(108,92,231,.11);position:relative}
+  .ico svg{width:20px;height:20px;stroke:#A78BFA;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{margin-top:20px;font-size:18px;font-weight:700;letter-spacing:-.32px;position:relative}
+  .card p{margin-top:10px;font-size:14.8px;line-height:1.7;color:var(--dim);position:relative}
+
+  /* anteprima */
+  .show{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .show-t .sub{margin-top:18px}
+  .checks{margin-top:26px;display:flex;flex-direction:column;gap:13px}
+  .chk{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.58;color:var(--mute)}
+  .chk i{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
+    background:rgba(108,92,231,.16);border:1px solid rgba(139,124,246,.3);
+    display:flex;align-items:center;justify-content:center}
+  .chk i svg{width:10px;height:10px;stroke:#A78BFA;stroke-width:3.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .chk b{color:#D5D7E6;font-weight:600}
+
+  .phone{position:relative;margin:0 auto;width:100%;max-width:330px;aspect-ratio:9/17.4;
+    border-radius:38px;padding:9px;background:linear-gradient(160deg,#25253a,#101018);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07);
+    transition:transform .5s cubic-bezier(.2,.9,.3,1)}
+  .phone:hover{transform:translateY(-8px) rotate(-.6deg)}
+  .screen{width:100%;height:100%;border-radius:30px;overflow:hidden;background:#05050A;position:relative}
+  .bar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+    font-size:10.5px;color:var(--faint);border-bottom:1px solid var(--line)}
+  .feed{padding:16px 15px;display:flex;flex-direction:column;gap:13px;overflow:hidden;height:calc(100% - 34px);
+    -webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}
+  .mail{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:rgba(255,255,255,.026);
+    opacity:0;transform:translateY(12px);animation:in .6s cubic-bezier(.2,.9,.3,1) forwards}
+  .mail:nth-child(1){animation-delay:.15s}.mail:nth-child(2){animation-delay:.32s}
+  .mail:nth-child(3){animation-delay:.49s}.mail:nth-child(4){animation-delay:.66s}
+  .mail:nth-child(5){animation-delay:.83s}.mail:nth-child(6){animation-delay:1s}
+  @keyframes in{to{opacity:1;transform:none}}
+  .mail .cat{font-size:8.5px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;color:var(--cyan)}
+  .mail .tt{margin-top:6px;font-size:12.5px;line-height:1.34;font-weight:650;letter-spacing:-.2px}
+  .mail .bd{margin-top:6px;font-size:10.5px;line-height:1.52;color:var(--faint)}
+  .mail.head-m{background:linear-gradient(160deg,rgba(108,92,231,.16),rgba(34,211,238,.06));
+    border-color:rgba(139,124,246,.24)}
+  .mail.head-m .tt{font-size:14px;font-weight:800;letter-spacing:-.35px}
+
+  /* archivio */
+  .arc{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .num{display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
+    background:var(--card);transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
+  .num:hover{border-color:rgba(139,124,246,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
+  .num .d{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet-lt)}
+  .num .t{margin-top:11px;font-size:16px;font-weight:650;line-height:1.38;letter-spacing:-.25px}
+  .num .g{margin-top:14px;font-size:13px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .num:hover .g{color:var(--violet-lt)}
+  .arc-empty{margin-top:34px;padding:34px 28px;border:1px dashed var(--line2);border-radius:18px;
+    text-align:center;font-size:15px;color:var(--dim)}
+
+  /* domande */
+  .faq{margin-top:44px;max-width:760px;margin-left:auto;margin-right:auto;
+    border-top:1px solid var(--line)}
+  .q{border-bottom:1px solid var(--line)}
+  .q summary{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:24px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;
+    font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:-.2px;transition:color .2s}
+  .q summary:hover{color:var(--violet-lt)}
+  .q .pm{width:22px;height:22px;flex-shrink:0;position:relative}
+  .q .pm::before,.q .pm::after{content:'';position:absolute;top:50%;left:50%;background:var(--dim);
+    border-radius:2px;transform:translate(-50%,-50%);transition:transform .3s cubic-bezier(.2,.9,.3,1),background .2s}
+  .q .pm::before{width:13px;height:1.8px}
+  .q .pm::after{width:1.8px;height:13px}
+  .q[open] .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .q[open] .pm::before,.q[open] .pm::after{background:var(--violet-lt)}
+  .a{overflow:hidden;height:0;transition:height .34s cubic-bezier(.2,.9,.3,1)}
+  .a p{padding:0 4px 26px;font-size:15.2px;line-height:1.72;color:var(--mute);max-width:640px}
+
+  /* chiusura */
+  .end{margin-top:110px;padding:64px 40px;border:1px solid var(--line2);border-radius:26px;text-align:center;
+    background:linear-gradient(160deg,rgba(108,92,231,.13),rgba(34,211,238,.05));position:relative;overflow:hidden}
+  .end::after{content:'';position:absolute;width:560px;height:560px;left:50%;top:-320px;
+    transform:translateX(-50%);pointer-events:none;
+    background:radial-gradient(circle,rgba(108,92,231,.24),transparent 66%);filter:blur(50px)}
+  .end h2{position:relative}
+  .end .sub{position:relative;margin-left:auto;margin-right:auto}
+  .end .form-box{position:relative;margin-top:34px}
+
+  footer{margin-top:100px;padding:38px 0 56px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    font-size:13px;color:var(--faint)}
+  footer a{color:var(--dim);text-decoration:none;transition:color .2s}
+  footer a:hover{color:var(--violet-lt)}
+  .fl{display:flex;gap:20px;flex-wrap:wrap}
+
+  /* comparse allo scorrimento */
+  .rise{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.9,.3,1),transform .7s cubic-bezier(.2,.9,.3,1)}
+  .rise.seen{opacity:1;transform:none}
+  .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+
+  /* ═══════════ tablet ═══════════ */
+  @media(max-width:900px){
+    .show{grid-template-columns:1fr;gap:44px}
+    .show-t{text-align:center}
+    .show-t .sub{margin-left:auto;margin-right:auto}
+    .checks{max-width:420px;margin-left:auto;margin-right:auto;text-align:left}
+    .cards{grid-template-columns:1fr 1fr}
+    .card:last-child{grid-column:1/-1}
+    .arc{grid-template-columns:1fr 1fr}
+    .num:last-child{grid-column:1/-1}
+  }
+  /* ═══════════ telefono ═══════════ */
+  @media(max-width:640px){
+    :root{--pad:20px}
+    .nav-in{height:58px}
+    .nlink{display:none}
+    .logo-t i{display:none}
+    .hero{padding-top:104px}
+    h1{margin-top:24px;letter-spacing:-.028em;max-width:none}
+    .lead{margin-top:20px}
+    .form-box{margin-top:30px}
+    form{flex-direction:column;gap:11px}
+    /* in colonna il flex governa l’altezza: va disattivato o il campo si schiaccia */
+    .field{flex:0 0 auto;width:100%}
+    input[type=email]{height:54px;font-size:16px}
+    .cta{width:100%;height:54px}
+    .fine{flex-direction:column;gap:5px}
+    .fine span+span::before{content:none}
+    .strip{margin-top:52px}
+    .sec{padding-top:84px}
+    .cards{grid-template-columns:1fr;gap:13px;margin-top:38px}
+    .card{padding:26px 24px 28px}
+    .card:last-child{grid-column:auto}
+    .arc{grid-template-columns:1fr;margin-top:32px}
+    .num:last-child{grid-column:auto}
+    .show{margin-top:40px}
+    .phone{max-width:290px}
+    .q summary{padding:20px 2px;font-size:15.5px}
+    .a p{padding-bottom:22px;font-size:14.8px}
+    .end{margin-top:84px;padding:44px 24px;border-radius:22px}
+    footer{margin-top:76px;flex-direction:column;text-align:center;gap:14px}
+  }
+  @media(max-width:380px){
+    .badge{font-size:11.5px;padding:6px 12px 6px 9px}
+    .logo-t{font-size:13.5px}
+  }
+  /* ═══════════ chi non vuole animazioni ═══════════ */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important}
+    .rise{opacity:1;transform:none}
+    .mail{opacity:1;transform:none}
   }
 </style>
 </head>
 <body>
-<div class="aurora"></div><div class="grid"></div>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="mesh"></div><div class="grain"></div>
 
-<div class="shell">
-  <header>
-    <div class="mark">ANDREA SFORNA</div>
-    <div class="kicker">Artificial Intelligence</div>
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <span class="logo-b">A</span>
+      <span class="logo-t">Andrea Sforna <i>· AI</i></span>
+    </a>
+    <div class="nav-r">
+      <a class="nlink" href="#dentro">Cosa ricevi</a>
+      <a class="nlink" href="#archivio">Archivio</a>
+      <a class="nlink" href="#domande">Domande</a>
+      <a class="nbtn" href="#iscriviti">Iscriviti</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ══════ apertura ══════ -->
+  <header class="wrap hero">
+    <div class="badge rise"><span class="live"></span> <b>Ogni sera alle 18</b> · gratis, per sempre</div>
+
+    <h1 class="rise d1">Le notizie sull’AI<br /><span class="grad">che contano davvero.</span></h1>
+
+    <p class="lead rise d2">Ogni sera alle 18 ti arriva un’email. Dentro trovi solo le notizie sull’intelligenza
+      artificiale che cambiano qualcosa, spiegate in modo che si capiscano. <b>Cinque minuti</b>, poi torni al tuo lavoro.</p>
+
+    <div class="form-box rise d3" id="iscriviti">
+      <form id="f" novalidate autocomplete="on">
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder="La tua email" required autocomplete="email"
+                 inputmode="email" aria-label="Il tuo indirizzo email" />
+        </div>
+        <button class="cta" type="submit" id="btn">Iscriviti gratis</button>
+      </form>
+      <p class="fine"><span>Un’email al giorno</span><span>nessuna pubblicità</span><span>annulli l’iscrizione con un clic</span></p>
+      <div class="msg" id="msg" role="alert"></div>
+    </div>
+
+    <div class="esito" id="esito" role="status">
+      <h3><span><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></span> Ci siamo quasi</h3>
+      <p>Ti ho appena mandato un’email per confermare che l’indirizzo è davvero tuo. Aprila e clicca sul pulsante:
+         da quel momento sei dentro.</p>
+      <p>Non la trovi? Guarda tra le promozioni o nello spam — e se la sposti nella posta in arrivo,
+         le prossime arriveranno dritte al punto giusto.</p>
+    </div>
+
+    <div class="strip rise">
+      <div class="strip-t">Di cosa parlo, ogni sera</div>
+      <div class="track" id="track"></div>
+    </div>
   </header>
 
-  <div class="pill"><span class="dot"></span> Ogni giorno, alle 18:00</div>
+  <!-- ══════ cosa ricevi ══════ -->
+  <section class="wrap sec" id="dentro">
+    <div class="head">
+      <div class="eyebrow rise">Cosa ricevi</div>
+      <h2 class="rise d1">Tre cose, e nient’altro.</h2>
+      <p class="sub rise d2">Non è un blog, non è un feed. È un’email corta che leggi mentre torni a casa.</p>
+    </div>
 
-  <h1>L'intelligenza artificiale,<br /><span class="grad">con la giusta distanza.</span></h1>
-
-  <p class="sub">Una selezione quotidiana di ciò che accade davvero nell'intelligenza artificiale: modelli, strumenti, dinamiche di mercato e implicazioni concrete. Analisi essenziale, fonti verificate, nessun clamore.</p>
-
-  <form id="f" novalidate>
-    <input type="email" id="email" placeholder="nome@esempio.com" required autocomplete="email" />
-    <button type="submit">Iscriviti</button>
-  </form>
-  <p class="note">Iscrizione gratuita, un invio al giorno. Puoi annullarla in qualsiasi momento.</p>
-
-  <p class="oops">Non è stato possibile completare l'iscrizione. Riprova fra qualche minuto.</p>
-
-  <div class="done">
-    <h3>Conferma richiesta</h3>
-    <p>Ti è stata inviata un'email di conferma. Apri il messaggio e conferma l'iscrizione: riceverai il primo numero già dal prossimo invio.</p>
-  </div>
-
-  <section class="facts">
-    <div class="fact"><div class="n">01</div><h4>Metodo</h4><p>Ogni notizia è verificata alla fonte. Nessuna previsione arbitraria, nessuna sponsorizzazione occulta.</p></div>
-    <div class="fact"><div class="n">02</div><h4>Sintesi</h4><p>Cinque minuti di lettura. Selezione di ciò che ha conseguenze reali, il resto resta fuori.</p></div>
-    <div class="fact"><div class="n">03</div><h4>Riservatezza</h4><p>Un solo invio al giorno. Il tuo indirizzo non viene ceduto né condiviso con terzi.</p></div>
+    <div class="cards" id="cards">
+      <article class="card rise">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h12M3 18h7"/></svg></div>
+        <h3>Le fonti le leggo io</h3>
+        <p>Al massimo cinque notizie, scelte fra decine. Se una cosa non cambia niente per nessuno, non entra.
+           Il tuo tempo vale più del mio.</p>
+      </article>
+      <article class="card rise d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+        <h3>Spiegate, non elencate</h3>
+        <p>Per ogni notizia: cos’è successo, perché conta e cosa cambia in concreto. In italiano,
+           senza gergo e senza titoli scritti per farti cliccare.</p>
+      </article>
+      <article class="card rise d2">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l7.5 3.4v5.3c0 4.3-3.1 8-7.5 9.3-4.4-1.3-7.5-5-7.5-9.3V6.4z"/></svg></div>
+        <h3>Zero rumore</h3>
+        <p>Un invio al giorno, mai uno in più. Nessuna pubblicità mascherata, nessuno sponsor nascosto.
+           Il tuo indirizzo non lo do a nessuno.</p>
+      </article>
+    </div>
   </section>
 
-  <footer>
-    © <span id="y"></span> Andrea Sforna · <a href="#">Privacy</a><br />
-    Puoi annullare l'iscrizione in qualsiasi momento dal collegamento presente in ogni email.
-  </footer>
-</div>
+  <!-- ══════ anteprima ══════ -->
+  <section class="wrap sec">
+    <div class="show">
+      <div class="show-t">
+        <div class="eyebrow rise">Com’è fatta</div>
+        <h2 class="rise d1">Aprila e in cinque minuti hai finito.</h2>
+        <p class="sub rise d2">Stessa struttura ogni sera, così sai già dove guardare. Le foto stanno accanto
+          alla notizia di cui parlano — mai una immagine messa lì per riempire.</p>
+        <div class="checks">
+          <div class="chk rise d2"><i><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></i>
+            <span><b>L’apertura</b> ti dice in due righe com’è andata la giornata.</span></div>
+          <div class="chk rise d3"><i><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></i>
+            <span><b>Le notizie</b> numerate, con la categoria in alto e il link alla fonte.</span></div>
+          <div class="chk rise d3"><i><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></i>
+            <span><b>Il punto</b> in chiusura: la frase che tiene insieme il resto.</span></div>
+        </div>
+      </div>
+
+      <div class="rise d1">
+        <div class="phone" aria-hidden="true">
+          <div class="screen">
+            <div class="bar"><span>18:00</span><span>Posta in arrivo</span></div>
+            <div class="feed">
+              <div class="mail head-m">
+                <div class="cat">Il numero di oggi</div>
+                <div class="tt">Chip, regole e capitali: la giornata in tre mosse</div>
+                <div class="bd">Tre notizie che si tengono insieme più di quanto sembri.</div>
+              </div>
+              <div class="mail">
+                <div class="cat">Modelli</div>
+                <div class="tt">Un modello aperto arriva a ridosso dei migliori chiusi</div>
+                <div class="bd">Cosa cambia per chi lo usa in azienda, e cosa no.</div>
+              </div>
+              <div class="mail">
+                <div class="cat">Mercato</div>
+                <div class="tt">La spesa in data center supera le stime del trimestre</div>
+                <div class="bd">Chi paga il conto, e su quale voce di bilancio.</div>
+              </div>
+              <div class="mail">
+                <div class="cat">Regole</div>
+                <div class="tt">Le nuove scadenze che toccano anche le piccole imprese</div>
+                <div class="bd">Le date da segnare, senza allarmismi.</div>
+              </div>
+              <div class="mail">
+                <div class="cat">Lavoro</div>
+                <div class="tt">Dove gli assistenti stanno davvero togliendo ore</div>
+                <div class="bd">I numeri di chi li usa da un anno, non le previsioni.</div>
+              </div>
+              <div class="mail">
+                <div class="cat">Il punto</div>
+                <div class="tt">Tre notizie, una direzione sola</div>
+                <div class="bd">La frase che tiene insieme la giornata.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ archivio ══════ -->
+  <section class="wrap sec" id="archivio">
+    <div class="head">
+      <div class="eyebrow rise">Archivio</div>
+      <h2 class="rise d1">Guarda com’è prima di iscriverti.</h2>
+      <p class="sub rise d2">Ogni numero resta online per sempre, al suo indirizzo. Trovi sempre l’ultimo
+        <a href="ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.34)">a questo link</a>.</p>
+    </div>
+    <div class="arc" id="arc" hidden></div>
+    <div class="arc-empty rise" id="arc-empty">Il primo numero non è ancora uscito. Iscriviti ora e ti arriva stasera alle 18.</div>
+  </section>
+
+  <!-- ══════ domande ══════ -->
+  <section class="wrap sec" id="domande">
+    <div class="head">
+      <div class="eyebrow rise">Domande</div>
+      <h2 class="rise d1">Quello che di solito mi chiedono.</h2>
+    </div>
+    <div class="faq rise d1">
+      <details class="q"><summary>Quanto costa?<span class="pm"></span></summary>
+        <div class="a"><p>Niente, ed è gratis anche domani. Non c’è una versione a pagamento nascosta dietro l’angolo
+          e non ti chiederò mai la carta.</p></div></details>
+      <details class="q"><summary>Quante email mi arrivano?<span class="pm"></span></summary>
+        <div class="a"><p>Una al giorno, alle 18. Se in una giornata non succede niente che valga la pena raccontare,
+          quella sera non ti scrivo: preferisco saltare un numero piuttosto che riempirlo di aria.</p></div></details>
+      <details class="q"><summary>Posso annullare l’iscrizione?<span class="pm"></span></summary>
+        <div class="a"><p>Quando vuoi. In fondo a ogni email c’è il link <b>Annulla iscrizione</b>: un clic e sei fuori,
+          senza domande e senza pagine che provano a farti cambiare idea.</p></div></details>
+      <details class="q"><summary>Che fine fa il mio indirizzo?<span class="pm"></span></summary>
+        <div class="a"><p>Resta dove l’hai messo. Serve solo a mandarti la newsletter: non lo vendo, non lo passo a
+          nessuno e non lo uso per altro. Se annulli l’iscrizione lo cancello.</p></div></details>
+      <details class="q"><summary>Perché devo confermare l’iscrizione?<span class="pm"></span></summary>
+        <div class="a"><p>Perché chiunque potrebbe scrivere il tuo indirizzo al posto tuo. L’email di conferma serve a
+          essere sicuri che sia davvero tuo: se non clicchi, non ti arriva niente.</p></div></details>
+      <details class="q"><summary>Chi la scrive?<span class="pm"></span></summary>
+        <div class="a"><p>Andrea Sforna. Seguo l’intelligenza artificiale ogni giorno, e questa newsletter nasce dagli
+          appunti che prendevo comunque per me. Se qualcosa non ti torna, rispondi all’email: leggo tutto.</p></div></details>
+    </div>
+  </section>
+
+  <!-- ══════ chiusura ══════ -->
+  <section class="wrap">
+    <div class="end rise">
+      <h2>Stasera alle 18, la prima.</h2>
+      <p class="sub">Lascia l’indirizzo, conferma dall’email che ti arriva e sei dentro. Ci vogliono venti secondi.</p>
+      <div class="form-box">
+        <form id="f2" novalidate autocomplete="on">
+          <div class="field">
+            <input type="email" id="email2" name="email" placeholder="La tua email" required autocomplete="email"
+                   inputmode="email" aria-label="Il tuo indirizzo email" />
+          </div>
+          <button class="cta" type="submit" id="btn2">Iscriviti gratis</button>
+        </form>
+        <p class="fine"><span>Un’email al giorno</span><span>nessuna pubblicità</span><span>annulli l’iscrizione con un clic</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <div>© <span id="y"></span> Andrea Sforna · Tutti i numeri restano online.</div>
+      <div class="fl">
+        <a href="ultimo/">Ultimo numero</a>
+        <a href="#archivio">Archivio</a>
+        <a href="#domande">Domande</a>
+      </div>
+    </footer>
+  </div>
+</main>
 
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
+(function(){
+  'use strict';
   var ISCRIZIONE = 'https://macbook-pro-di-apple.tailb93c0a.ts.net:10000/webhook/iscrizione';
+  var MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
+              'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  var due = function(n){ return (n < 10 ? '0' : '') + n; };
 
-  document.getElementById('f').addEventListener('submit', async function(e){
-    e.preventDefault();
-    var email = document.getElementById('email').value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
-      document.getElementById('email').focus(); return;
-    }
-    var btn = this.querySelector('button'), testo = btn.textContent;
-    btn.textContent = 'Invio in corso…'; btn.disabled = true;
-    document.body.classList.remove('err');
-    try{
-      var r = await fetch(ISCRIZIONE, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ email: email, origine: 'landing' })
-      });
-      // non basta il codice 200: pretendiamo la conferma esplicita del flusso
-      var d = await r.json().catch(function(){ return null; });
-      if(!r.ok || !d || d.ok !== true) throw new Error('risposta inattesa');
-      document.body.classList.add('sent');
-    }catch(err){
-      // niente falsi "iscritto!": se non è arrivata, lo diciamo
-      document.body.classList.add('err');
-      btn.textContent = testo; btn.disabled = false;
-    }
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  /* ── nastro argomenti: due giri identici, così lo scorrimento non ha stacchi ── */
+  var TEMI = ['Modelli e rilasci','Regole e AI Act','Chip e data center','Investimenti',
+              'Agenti e automazione','Open source','Lavoro','Ricerca','Privacy','Strumenti pratici'];
+  var track = document.getElementById('track');
+  for (var giro = 0; giro < 2; giro++){
+    TEMI.forEach(function(t){
+      var s = document.createElement('span'); s.className = 'tag'; s.textContent = t; track.appendChild(s);
+    });
+  }
+
+  /* ── comparse allo scorrimento ── */
+  var elementi = document.querySelectorAll('.rise');
+  if ('IntersectionObserver' in window){
+    var occhio = new IntersectionObserver(function(voci){
+      voci.forEach(function(v){ if (v.isIntersecting){ v.target.classList.add('seen'); occhio.unobserve(v.target); } });
+    }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+    elementi.forEach(function(e){ occhio.observe(e); });
+  } else {
+    elementi.forEach(function(e){ e.classList.add('seen'); });
+  }
+
+  /* ── barra in alto ── */
+  var nav = document.getElementById('nav');
+  var scorri = function(){ nav.classList.toggle('on', window.scrollY > 12); };
+  scorri(); window.addEventListener('scroll', scorri, { passive:true });
+
+  /* ── luce che segue il mouse sulle carte ── */
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
   });
+
+  /* ── domande: apertura con altezza animata, senza salti ── */
+  document.querySelectorAll('.q').forEach(function(q){
+    var riq = q.querySelector('.a');
+    var testa = q.querySelector('summary');
+    testa.addEventListener('click', function(e){
+      e.preventDefault();
+      var apre = !q.open;
+      if (apre){
+        q.open = true;
+        riq.style.height = riq.scrollHeight + 'px';
+      } else {
+        riq.style.height = riq.scrollHeight + 'px';
+        requestAnimationFrame(function(){ riq.style.height = '0px'; });
+        // il pannello resta nel DOM finché la chiusura non è finita
+        setTimeout(function(){ q.open = false; }, 340);
+      }
+    });
+    riq.addEventListener('transitionend', function(){
+      if (q.open) riq.style.height = 'auto';
+    });
+  });
+  // summary di default mostra il triangolino: lo togliamo via CSS inline per non sporcare il foglio
+  var stile = document.createElement('style');
+  stile.textContent = 'summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}' +
+                      '';
+  document.head.appendChild(stile);
+
+  /* ── archivio: elenco vero, letto dal file pubblicato insieme ai numeri ── */
+  fetch('numeri.json', { cache:'no-store' })
+    .then(function(r){ if (!r.ok) throw new Error('assente'); return r.json(); })
+    .then(function(dati){
+      var numeri = (dati && dati.numeri || []).slice(0, 3);
+      if (!numeri.length) return;
+      var box = document.getElementById('arc');
+      numeri.forEach(function(n, i){
+        var p = n.data.split('-');
+        var quando = parseInt(p[2],10) + ' ' + MESI[parseInt(p[1],10)-1] + ' ' + p[0];
+        var a = document.createElement('a');
+        a.className = 'num rise' + (i ? ' d' + i : '');
+        a.href = 'numeri/' + n.data + '/';
+        a.innerHTML = '<div class="d">N. ' + due(n.numero) + ' · ' + quando + '</div>' +
+                      '<div class="t"></div>' +
+                      '<div class="g">Leggi il numero &nbsp;&rarr;</div>';
+        a.querySelector('.t').textContent = n.titolo;   // testo del modello: mai iniettato come HTML
+        box.appendChild(a);
+        if (occhio) occhio.observe(a); else a.classList.add('seen');
+      });
+      box.hidden = false;
+      document.getElementById('arc-empty').remove();
+    })
+    .catch(function(){ /* nessun numero ancora pubblicato: resta il messaggio di attesa */ });
+
+  /* ── iscrizione ── */
+  function collega(idForm, idCampo, idBottone){
+    var form = document.getElementById(idForm);
+    if (!form) return;
+    var campo = document.getElementById(idCampo), bottone = document.getElementById(idBottone);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msg = document.getElementById('msg');
+      var email = campo.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        msg.className = 'msg err';
+        msg.textContent = "Controlla l’indirizzo: manca qualcosa.";
+        campo.focus(); return;
+      }
+      var testo = bottone.textContent;
+      bottone.textContent = 'Un attimo…'; bottone.disabled = true;
+      msg.className = 'msg'; msg.textContent = '';
+      fetch(ISCRIZIONE, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: email, origine: 'sito' })
+      })
+      .then(function(r){ return r.json().catch(function(){ return null; }).then(function(d){ return { r:r, d:d }; }); })
+      .then(function(esito){
+        // non basta il codice 200: pretendiamo la conferma esplicita del flusso
+        if (!esito.r.ok || !esito.d || esito.d.ok !== true) throw new Error('risposta inattesa');
+        document.body.classList.add('ok');
+        var box = document.getElementById('esito');
+        box.scrollIntoView({ behavior:'smooth', block:'center' });
+      })
+      .catch(function(){
+        // niente falsi "sei iscritto": se non è andata, lo diciamo
+        msg.className = 'msg err';
+        msg.textContent = "Non sono riuscito a registrare l’iscrizione. Riprova fra un minuto: se non va, scrivimi e ti aggiungo a mano.";
+        bottone.textContent = testo; bottone.disabled = false;
+      });
+    });
+  }
+  collega('f','email','btn');
+  collega('f2','email2','btn2');
+})();
 </script>
 </body>
 </html>
