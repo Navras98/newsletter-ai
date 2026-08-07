@@ -36,6 +36,14 @@
   .box{margin-top:38px;padding:22px 26px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.028)}
   .box span{color:#C6C8DA;font-weight:600}
   footer{margin-top:52px;font-size:12px;color:#3F4256;line-height:1.8}
+  @media(max-width:620px){
+    h1{font-size:clamp(28px,8.2vw,38px);letter-spacing:-1.1px;margin-top:28px}
+    .tick{margin-top:42px;width:64px;height:64px}
+    .tick svg{width:29px;height:29px}
+    p{font-size:16px;margin-top:17px}
+    .box{margin-top:30px;padding:20px 22px;text-align:left}
+    footer{margin-top:42px}
+  }
 </style>
 </head>
 <body>
@@ -46,12 +54,12 @@
 
   <div class="tick"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div>
 
-  <h1>Sei dentro.<br /><span class="grad">A domani alle 18.</span></h1>
-  <p>Iscrizione confermata. Da qui in poi ricevi un'email al giorno con quello che è successo davvero nell'intelligenza artificiale.</p>
+  <h1>Iscrizione confermata.<br /><span class="grad">Il primo numero alle 18:00.</span></h1>
+  <p>Da oggi riceverai un invio quotidiano con una selezione ragionata di ciò che accade nell'intelligenza artificiale.</p>
 
-  <div class="box"><span>Un consiglio:</span> sposta la prima email nella posta in arrivo se la trovi tra le promozioni. Così le successive arrivano dove devono.</div>
+  <div class="box"><span>Suggerimento:</span> se il primo messaggio dovesse arrivare tra le promozioni, spostalo nella posta in arrivo. I successivi seguiranno lo stesso percorso.</div>
 
-  <footer>Ti puoi disiscrivere in qualsiasi momento dal link in fondo a ogni email.</footer>
+  <footer>Puoi annullare l'iscrizione in qualsiasi momento dal collegamento presente in ogni email.</footer>
 </div>
 </body>
 </html>
