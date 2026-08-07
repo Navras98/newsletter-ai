@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Archivio · Andrea Sforna AI</title>
+<meta name="description" content="Tutti i numeri della newsletter sulle notizie dell’intelligenza artificiale. Ogni numero resta online al suo indirizzo." />
+<meta name="theme-color" content="#05050A" />
+<link rel="canonical" href="https://navras98.github.io/newsletter-ai/archivio/" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236C5CE7'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#05050A;--ink:#fff;--mute:#A0A3BA;--dim:#63667D;--faint:#3E4155;
+    --violet:#6C5CE7;--violet-lt:#A78BFA;--cyan:#22D3EE;
+    --line:rgba(255,255,255,.075);--line2:rgba(255,255,255,.12);--card:rgba(255,255,255,.026);--pad:24px}
+  html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body{background:var(--bg);color:var(--ink);min-height:100svh;overflow-x:hidden;position:relative;line-height:1.6;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+  a{color:inherit}
+  .bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .blob{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform}
+  .b1{width:min(760px,150vw);aspect-ratio:1;top:-42vh;left:50%;
+    background:radial-gradient(circle,rgba(108,92,231,.3),rgba(108,92,231,0) 66%);
+    animation:d1 26s ease-in-out infinite}
+  .b2{width:min(600px,130vw);aspect-ratio:1;top:10vh;left:50%;
+    background:radial-gradient(circle,rgba(34,211,238,.16),rgba(34,211,238,0) 66%);
+    animation:d2 32s ease-in-out infinite}
+  @keyframes d1{0%,100%{transform:translate(-58%,0) scale(1)}50%{transform:translate(-46%,4vh) scale(1.12)}}
+  @keyframes d2{0%,100%{transform:translate(16%,0) scale(1)}50%{transform:translate(-4%,6vh) scale(1.15)}}
+  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{position:relative;z-index:2;width:100%;max-width:860px;margin:0 auto;padding:0 var(--pad)}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(5,5,10,.74);
+    backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+    border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo-b{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#6C5CE7,#22D3EE);
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;
+    letter-spacing:-.6px;box-shadow:0 6px 18px -6px rgba(108,92,231,.9)}
+  .logo-t{font-size:14.5px;font-weight:700;letter-spacing:-.25px;white-space:nowrap}
+  .logo-t i{font-style:normal;color:var(--dim);font-weight:500}
+  .nbtn{padding:9px 17px;border-radius:10px;font-size:13.5px;font-weight:600;color:#fff;text-decoration:none;
+    white-space:nowrap;background:linear-gradient(120deg,#6C5CE7,#7A5AE8 60%,#3BA9D9);
+    box-shadow:0 8px 22px -10px rgba(108,92,231,.95);
+    transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .2s}
+  .nbtn:hover{transform:translateY(-1.5px);filter:brightness(1.09)}
+
+  header.top{padding:76px 0 0}
+  .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;color:var(--violet-lt)}
+  h1{margin-top:14px;font-size:clamp(34px,6vw,54px);line-height:1.06;font-weight:800;letter-spacing:-.034em}
+  .grad{background:linear-gradient(105deg,#C4B5FD,#8B7CF6 34%,#6C5CE7 60%,#22D3EE 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;animation:slide 9s ease-in-out infinite}
+  @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .lead{margin-top:18px;font-size:17px;line-height:1.68;color:var(--mute);max-width:560px}
+
+  .lista{margin:52px 0 0;display:flex;flex-direction:column;gap:12px}
+  .num{display:flex;align-items:center;gap:22px;text-decoration:none;padding:24px 26px;
+    border:1px solid var(--line);border-radius:18px;background:var(--card);
+    transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
+  .num:hover{border-color:rgba(139,124,246,.32);background:rgba(255,255,255,.05);transform:translateY(-2px)}
+  .num .n{flex:0 0 auto;font-size:30px;font-weight:800;letter-spacing:-1.4px;color:#2E2A55;
+    transition:color .28s;font-variant-numeric:tabular-nums}
+  .num:hover .n{color:#5B4FBF}
+  .num .c{flex:1 1 auto;min-width:0}
+  .num .d{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet-lt)}
+  .num .t{margin-top:8px;font-size:17.5px;font-weight:650;line-height:1.4;letter-spacing:-.28px}
+  .num .s{margin-top:8px;font-size:14px;line-height:1.6;color:var(--dim);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .num .f{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);
+    display:flex;align-items:center;justify-content:center;transition:border-color .28s,background .28s}
+  .num:hover .f{border-color:rgba(139,124,246,.4);background:rgba(108,92,231,.14)}
+  .num .f svg{width:14px;height:14px;stroke:var(--dim);stroke-width:2.4;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;transition:stroke .28s}
+  .num:hover .f svg{stroke:var(--violet-lt)}
+
+  .vuoto{margin-top:52px;padding:44px 30px;border:1px dashed var(--line2);border-radius:20px;text-align:center}
+  .vuoto h3{font-size:18px;font-weight:700;letter-spacing:-.3px}
+  .vuoto p{margin-top:10px;font-size:15px;color:var(--dim)}
+  .vuoto a{margin-top:20px;display:inline-block;padding:12px 22px;border-radius:11px;font-size:14.5px;
+    font-weight:600;color:#fff;text-decoration:none;
+    background:linear-gradient(120deg,#6C5CE7,#7A5AE8 55%,#3BA9D9);
+    box-shadow:0 12px 32px -12px rgba(108,92,231,.95);transition:transform .18s,filter .2s}
+  .vuoto a:hover{transform:translateY(-2px);filter:brightness(1.09)}
+
+  footer{margin-top:88px;padding:34px 0 54px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    font-size:13px;color:var(--faint)}
+  footer a{color:var(--dim);text-decoration:none;transition:color .2s}
+  footer a:hover{color:var(--violet-lt)}
+  .fl{display:flex;gap:20px;flex-wrap:wrap}
+
+  .rise{opacity:0;transform:translateY(22px);
+    transition:opacity .65s cubic-bezier(.2,.9,.3,1),transform .65s cubic-bezier(.2,.9,.3,1)}
+  .rise.seen{opacity:1;transform:none}
+
+  @media(max-width:640px){
+    :root{--pad:20px}
+    .nav-in{height:58px}
+    .logo-t i{display:none}
+    header.top{padding-top:56px}
+    .lista{margin-top:38px;gap:11px}
+    .num{padding:20px 20px;gap:16px}
+    .num .n{font-size:24px}
+    .num .t{font-size:16px}
+    .num .s{display:none}
+    .num .f{width:30px;height:30px}
+    footer{margin-top:68px;flex-direction:column;text-align:center;gap:14px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important}
+    .rise{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div><div class="grain"></div>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="../"><span class="logo-b">A</span><span class="logo-t">Andrea Sforna <i>· AI</i></span></a>
+    <a class="nbtn" href="../#iscriviti">Iscriviti</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow rise">Archivio</div>
+    <h1 class="rise">Tutti i numeri,<br /><span class="grad">dal primo a stasera.</span></h1>
+    <p class="lead rise">Ogni numero resta online per sempre al suo indirizzo. L’ultimo uscito lo trovi
+      sempre <a href="../ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.34)">qui</a>.</p>
+  </header>
+
+  <div class="lista" id="lista"></div>
+
+  <div class="vuoto rise" id="vuoto" hidden>
+    <h3>Non è ancora uscito nessun numero.</h3>
+    <p>Il primo arriva stasera alle 18. Lascia l’indirizzo e te lo mando.</p>
+    <a href="../#iscriviti">Iscriviti gratis</a>
+  </div>
+
+  <footer>
+    <div>© <span id="y"></span> Andrea Sforna</div>
+    <div class="fl">
+      <a href="../">Iscriviti</a>
+      <a href="../ultimo/">Ultimo numero</a>
+      <a href="../#domande">Domande</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
+              'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  var occhio = null;
+  if ('IntersectionObserver' in window){
+    occhio = new IntersectionObserver(function(voci){
+      voci.forEach(function(v){ if (v.isIntersecting){ v.target.classList.add('seen'); occhio.unobserve(v.target); } });
+    }, { threshold:.1, rootMargin:'0px 0px -6% 0px' });
+  }
+  function mostra(e){ if (occhio) occhio.observe(e); else e.classList.add('seen'); }
+  document.querySelectorAll('.rise').forEach(mostra);
+
+  function vuoto(){ document.getElementById('vuoto').hidden = false; mostra(document.getElementById('vuoto')); }
+
+  fetch('../numeri.json', { cache:'no-store' })
+    .then(function(r){ if (!r.ok) throw new Error('assente'); return r.json(); })
+    .then(function(dati){
+      var numeri = (dati && dati.numeri) || [];
+      if (!numeri.length) return vuoto();
+      var lista = document.getElementById('lista');
+      numeri.forEach(function(n){
+        var p = n.data.split('-');
+        var quando = parseInt(p[2],10) + ' ' + MESI[parseInt(p[1],10)-1] + ' ' + p[0];
+        var a = document.createElement('a');
+        a.className = 'num rise';
+        a.href = '../numeri/' + n.data + '/';
+        a.innerHTML = '<div class="n"></div><div class="c"><div class="d"></div>' +
+                      '<div class="t"></div><div class="s"></div></div>' +
+                      '<div class="f"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></div>';
+        // testi del modello: sempre come testo, mai come HTML
+        a.querySelector('.n').textContent = (n.numero < 10 ? '0' : '') + n.numero;
+        a.querySelector('.d').textContent = quando;
+        a.querySelector('.t').textContent = n.titolo;
+        a.querySelector('.s').textContent = n.sommario || '';
+        lista.appendChild(a);
+        mostra(a);
+      });
+    })
+    .catch(vuoto);
+})();
+</script>
+</body>
+</html>
