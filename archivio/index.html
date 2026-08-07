@@ -59,7 +59,7 @@
   @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
   .lead{margin-top:18px;font-size:17px;line-height:1.68;color:var(--mute);max-width:560px}
 
-  .lista{margin:52px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:18px}
+  .lista{margin:52px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(430px,100%),1fr));gap:18px}
   .num{display:flex;align-items:center;gap:22px;text-decoration:none;padding:24px 26px;
     border:1px solid var(--line);border-radius:18px;background:var(--card);
     transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
