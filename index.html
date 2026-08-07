@@ -222,7 +222,9 @@
   .mail.head-m .tt{font-size:14px;font-weight:800;letter-spacing:-.35px}
 
   /* archivio */
-  .arc{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),340px));gap:18px;justify-content:center}
+  /* auto-fit, non auto-fill: le colonne vuote spariscono, cosi' con un numero
+     solo la scheda resta al centro invece di finire spinta a sinistra */
+  .arc{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),340px));gap:18px;justify-content:center}
   .num{display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
     background:var(--card);transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
   .num:hover{border-color:rgba(139,124,246,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
