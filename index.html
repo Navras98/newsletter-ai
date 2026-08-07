@@ -648,6 +648,11 @@
       var tutti = document.getElementById('tutti');
       tutti.hidden = false; if (occhio) occhio.observe(tutti); else tutti.classList.add('seen');
       document.getElementById('arc-empty').remove();
+      // le schede nascono dopo il paracadute di prima: gliene serve uno loro
+      setTimeout(function(){
+        box.querySelectorAll('.rise').forEach(function(e){ e.classList.add('seen'); });
+        tutti.classList.add('seen');
+      }, 2000);
     })
     .catch(function(){ /* nessun numero ancora pubblicato: resta il messaggio di attesa */ });
 
