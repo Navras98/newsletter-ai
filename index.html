@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Andrea Sforna · AI — la newsletter</title>
-<meta name="description" content="Ogni giorno, quello che conta davvero nell'intelligenza artificiale. Senza rumore." />
+<title>Andrea Sforna · AI — La newsletter quotidiana sull'intelligenza artificiale</title>
+<meta name="description" content="Una selezione quotidiana di ciò che accade nell'intelligenza artificiale: modelli, strumenti, mercato. Ogni giorno alle 18:00." />
 <meta property="og:title" content="Andrea Sforna · AI" />
-<meta property="og:description" content="Ogni giorno, quello che conta davvero nell'intelligenza artificiale." />
+<meta property="og:description" content="Una selezione quotidiana di ciò che accade nell'intelligenza artificiale. Ogni giorno alle 18:00." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -98,11 +98,16 @@
   footer a{color:#5C5F75;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.09)}
 
   @media(max-width:620px){
-    .facts{grid-template-columns:1fr}
-    form{flex-direction:column}
-    button{width:100%}
-    h1{letter-spacing:-1.5px}
-    .pill{margin-top:48px}
+    .facts{grid-template-columns:1fr;margin-top:64px}
+    form{flex-direction:column;gap:12px}
+    /* in colonna il flex governa l'altezza: va disattivato o il campo si schiaccia */
+    input[type=email]{flex:0 0 auto;width:100%;height:54px}
+    button{width:100%;height:54px}
+    h1{letter-spacing:-1.4px;font-size:clamp(34px,9.4vw,44px)}
+    .sub{font-size:16.5px;margin-top:20px}
+    .pill{margin-top:46px;margin-bottom:26px}
+    header{padding-top:40px}
+    footer{margin:56px 0 44px}
   }
 </style>
 </head>
@@ -117,32 +122,32 @@
 
   <div class="pill"><span class="dot"></span> Ogni giorno, alle 18:00</div>
 
-  <h1>L'intelligenza artificiale,<br /><span class="grad">senza rumore.</span></h1>
+  <h1>L'intelligenza artificiale,<br /><span class="grad">con la giusta distanza.</span></h1>
 
-  <p class="sub">Quello che è successo davvero oggi nell'AI: modelli, strumenti, prezzi e cosa cambia per te. Letto, filtrato e scritto in modo che si capisca.</p>
+  <p class="sub">Una selezione quotidiana di ciò che accade davvero nell'intelligenza artificiale: modelli, strumenti, dinamiche di mercato e implicazioni concrete. Analisi essenziale, fonti verificate, nessun clamore.</p>
 
   <form id="f" novalidate>
-    <input type="email" id="email" placeholder="latua@email.com" required autocomplete="email" />
-    <button type="submit">Iscriviti gratis</button>
+    <input type="email" id="email" placeholder="nome@esempio.com" required autocomplete="email" />
+    <button type="submit">Iscriviti</button>
   </form>
-  <p class="note">Niente spam. Un'email al giorno. Ti disiscrivi con un clic.</p>
+  <p class="note">Iscrizione gratuita, un invio al giorno. Puoi annullarla in qualsiasi momento.</p>
 
-  <p class="oops">Non sono riuscito a registrarti adesso. Riprova fra qualche minuto.</p>
+  <p class="oops">Non è stato possibile completare l'iscrizione. Riprova fra qualche minuto.</p>
 
   <div class="done">
-    <h3>Controlla la posta ✉️</h3>
-    <p>Ti ho mandato un'email di conferma. Apri e clicca il link: da domani sei dentro.</p>
+    <h3>Conferma richiesta</h3>
+    <p>Ti è stata inviata un'email di conferma. Apri il messaggio e conferma l'iscrizione: riceverai il primo numero già dal prossimo invio.</p>
   </div>
 
   <section class="facts">
-    <div class="fact"><div class="n">01</div><h4>Solo fatti</h4><p>Fonti vere, nessuna previsione inventata, nessuno sponsor mascherato.</p></div>
-    <div class="fact"><div class="n">02</div><h4>Cinque minuti</h4><p>Il tempo di un caffè. Se una notizia non ti serve, non la trovi qui.</p></div>
-    <div class="fact"><div class="n">03</div><h4>Zero rumore</h4><p>Un'email al giorno e basta. Il tuo indirizzo non va da nessuna parte.</p></div>
+    <div class="fact"><div class="n">01</div><h4>Metodo</h4><p>Ogni notizia è verificata alla fonte. Nessuna previsione arbitraria, nessuna sponsorizzazione occulta.</p></div>
+    <div class="fact"><div class="n">02</div><h4>Sintesi</h4><p>Cinque minuti di lettura. Selezione di ciò che ha conseguenze reali, il resto resta fuori.</p></div>
+    <div class="fact"><div class="n">03</div><h4>Riservatezza</h4><p>Un solo invio al giorno. Il tuo indirizzo non viene ceduto né condiviso con terzi.</p></div>
   </section>
 
   <footer>
     © <span id="y"></span> Andrea Sforna · <a href="#">Privacy</a><br />
-    Ti puoi disiscrivere in qualsiasi momento dal link in fondo a ogni email.
+    Puoi annullare l'iscrizione in qualsiasi momento dal collegamento presente in ogni email.
   </footer>
 </div>
 
@@ -157,7 +162,7 @@
       document.getElementById('email').focus(); return;
     }
     var btn = this.querySelector('button'), testo = btn.textContent;
-    btn.textContent = 'Un attimo…'; btn.disabled = true;
+    btn.textContent = 'Invio in corso…'; btn.disabled = true;
     document.body.classList.remove('err');
     try{
       var r = await fetch(ISCRIZIONE, {
