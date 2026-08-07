@@ -16,6 +16,7 @@
     --violet:#6C5CE7;--violet-lt:#A78BFA;--cyan:#22D3EE;
     --line:rgba(255,255,255,.075);--line2:rgba(255,255,255,.12);--card:rgba(255,255,255,.026)}
   html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  a{color:inherit}
   body{background:var(--bg);color:var(--ink);min-height:100svh;padding:32px 24px;
     font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -53,8 +54,8 @@
     border:1px solid rgba(139,124,246,.4);animation:ring 3s ease-out infinite}
   @keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
   .tick svg{width:34px;height:34px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;
-    stroke-dasharray:32;stroke-dashoffset:32;animation:draw .55s cubic-bezier(.6,0,.3,1) .5s forwards}
-  @keyframes draw{to{stroke-dashoffset:0}}
+    stroke-dasharray:32;stroke-dashoffset:0;animation:draw .55s cubic-bezier(.6,0,.3,1) .35s backwards}
+  @keyframes draw{from{stroke-dashoffset:32}to{stroke-dashoffset:0}}
 
   h1{margin-top:32px;font-size:clamp(31px,6.4vw,50px);line-height:1.06;font-weight:800;letter-spacing:-.034em}
   .grad{background:linear-gradient(105deg,#C4B5FD,#8B7CF6 34%,#6C5CE7 60%,#22D3EE 100%);
@@ -95,7 +96,6 @@
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
       transition-duration:.001ms!important}
-    .tick svg{stroke-dashoffset:0}
   }
 </style>
 </head>
@@ -107,7 +107,7 @@
 
   <div class="tick"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div>
 
-  <h1>Ci sei.<br /><span class="grad">Ci vediamo stasera alle 18.</span></h1>
+  <h1>Ci sei.<br /><span class="grad">Ci vediamo alle 18.</span></h1>
   <p class="lead">L’iscrizione è confermata. Da oggi ti arriva un’email al giorno con le notizie
     sull’intelligenza artificiale che contano davvero.</p>
 
