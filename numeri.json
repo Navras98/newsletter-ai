@@ -1,4 +1,13 @@
 {
- "aggiornato": null,
- "numeri": []
+ "aggiornato": "2026-08-08",
+ "numeri": [
+  {
+   "numero": 1,
+   "data": "2026-08-08",
+   "slug": "2026-08-08",
+   "titolo": "L'IA si espande in nuovi territori, ma la sicurezza frena e le leadership si muovono",
+   "sommario": "OpenAI sviluppa un altoparlante hardware e rallenta un modello per paura degli attacchi informatici. Google riorganizza il suo team IA mentre Alibaba lancia nuovi prodotti gratuiti. In Armenia aprono grandi centri di calcolo per l'IA.",
+   "lancio": "2026-08-08-210236"
+  }
+ ]
 }
