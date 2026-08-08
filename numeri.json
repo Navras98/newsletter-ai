@@ -2,6 +2,14 @@
  "aggiornato": "2026-08-08",
  "numeri": [
   {
+   "numero": 3,
+   "data": "2026-08-08",
+   "slug": "2026-08-08-3",
+   "titolo": "Acquisizioni, lavoro, dibattiti: l'IA entra ovunque",
+   "sommario": "OpenAI compra un'app di presentazioni, la Cina crea una professione per addestrare robot, gli esperti chiedono trasparenza sugli abusi degli chatbot, un rapper ammette di usare IA per una canzone e Roku lancia un canale interamente generato dall'IA.",
+   "lancio": "2026-08-08-224643"
+  },
+  {
    "numero": 2,
    "data": "2026-08-08",
    "slug": "2026-08-08-2",
