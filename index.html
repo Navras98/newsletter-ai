@@ -642,7 +642,9 @@
         var quando = parseInt(p[2],10) + ' ' + MESI[parseInt(p[1],10)-1] + ' ' + p[0];
         var a = document.createElement('a');
         a.className = 'num rise' + (i ? ' d' + i : '');
-        a.href = 'numeri/' + n.data + '/';
+        // la cartella del numero e' la sua, non la sua data: di numeri in un
+        // giorno se ne possono fare due, e il secondo vive accanto al primo
+        a.href = 'numeri/' + (n.slug || n.data) + '/';
         a.innerHTML = '<div class="d">N. ' + due(n.numero) + ' · ' + quando + '</div>' +
                       '<div class="t"></div>' +
                       '<div class="g">Leggi il numero &nbsp;&rarr;</div>';
