@@ -2,14 +2,6 @@
  "aggiornato": "2026-08-08",
  "numeri": [
   {
-   "numero": 2,
-   "data": "2026-08-08",
-   "slug": "2026-08-08-2",
-   "titolo": "Prova di impaginazione del numero, con le notizie vere",
-   "sommario": "Prova di impaginazione con le notizie vere di adesso. Questo testo non esce mai da qui: serve a vedere come cadono i pesi tipografici, senza chiamare il modello e senza spendere niente. Le misure sono quelle definitive.",
-   "lancio": "2026-08-08-205517"
-  },
-  {
    "numero": 1,
    "data": "2026-08-08",
    "slug": "2026-08-08",
