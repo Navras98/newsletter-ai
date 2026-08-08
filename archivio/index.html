@@ -197,7 +197,9 @@
         var quando = parseInt(p[2],10) + ' ' + MESI[parseInt(p[1],10)-1] + ' ' + p[0];
         var a = document.createElement('a');
         a.className = 'num rise';
-        a.href = '../numeri/' + n.data + '/';
+        // la cartella del numero e' la sua, non la sua data: di numeri in un
+        // giorno se ne possono fare due, e il secondo vive accanto al primo
+        a.href = '../numeri/' + (n.slug || n.data) + '/';
         a.innerHTML = '<div class="n"></div><div class="c"><div class="d"></div>' +
                       '<div class="t"></div><div class="s"></div></div>' +
                       '<div class="f"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></div>';
