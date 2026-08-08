@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Andrea Sforna · AI — Le notizie sull’intelligenza artificiale che contano davvero</title>
 <meta name="description" content="Quando nell’intelligenza artificiale succede qualcosa che conta davvero, ti arriva un’email che te lo spiega. Non tutti i giorni: solo quando ne vale la pena. Cinque minuti, gratis." />
-<meta name="theme-color" content="#05050A" />
+<meta name="theme-color" content="#0A0A0F" />
 <link rel="canonical" href="https://navras98.github.io/newsletter-ai/" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://navras98.github.io/newsletter-ai/" />
 <meta property="og:title" content="Andrea Sforna · AI" />
 <meta property="og:description" content="Le notizie sull’intelligenza artificiale che contano davvero. Solo quando c’è qualcosa da dire, in cinque minuti." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236C5CE7'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23EC5647'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#05050A; --bg2:#07070E;
+    --bg:#0A0A0F; --bg2:#101018;
     --ink:#FFFFFF; --mute:#A9ACC2; --dim:#7B7E96; --faint:#565971;
-    --violet:#6C5CE7; --violet-lt:#A78BFA; --cyan:#22D3EE;
+    --violet:#EC5647; --violet-lt:#F5847A; --cyan:#C9382B;
     --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.12);
     --card:rgba(255,255,255,.026);
     --pad:28px; --max:1280px;
@@ -32,7 +32,7 @@
     font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
     font-size:16px; line-height:1.6;
   }
-  ::selection{background:rgba(108,92,231,.42)}
+  ::selection{background:rgba(236,86,71,.42)}
   img{max-width:100%;height:auto;display:block}
   a{color:inherit}
 
@@ -40,13 +40,13 @@
   .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .blob{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform}
   .b1{width:min(820px,150vw);aspect-ratio:1;top:-38vh;left:50%;
-      background:radial-gradient(circle,rgba(108,92,231,.36),rgba(108,92,231,0) 66%);
+      background:radial-gradient(circle,rgba(236,86,71,.36),rgba(236,86,71,0) 66%);
       animation:drift1 24s ease-in-out infinite}
   .b2{width:min(660px,130vw);aspect-ratio:1;top:4vh;left:50%;
-      background:radial-gradient(circle,rgba(34,211,238,.20),rgba(34,211,238,0) 66%);
+      background:radial-gradient(circle,rgba(201,56,43,.20),rgba(201,56,43,0) 66%);
       animation:drift2 30s ease-in-out infinite}
   .b3{width:min(700px,140vw);aspect-ratio:1;top:118vh;left:50%;
-      background:radial-gradient(circle,rgba(167,139,250,.14),rgba(167,139,250,0) 68%);
+      background:radial-gradient(circle,rgba(245,132,122,.14),rgba(245,132,122,0) 68%);
       animation:drift1 34s ease-in-out infinite reverse}
   @keyframes drift1{
     0%,100%{transform:translate(-58%,0) scale(1)}
@@ -68,15 +68,15 @@
   /* ═══════════ barra ═══════════ */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s}
   .nav::after{content:'';position:absolute;inset:0;border-bottom:1px solid transparent;transition:border-color .3s}
-  .nav.on{background:rgba(5,5,10,.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
+  .nav.on{background:rgba(10,10,15,.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
   .nav.on::after{border-bottom-color:var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
   .logo-b{width:30px;height:30px;border-radius:9px;flex-shrink:0;
-    background:linear-gradient(135deg,#6C5CE7,#22D3EE);
+    background:linear-gradient(135deg,#EC5647,#C9382B);
     display:flex;align-items:center;justify-content:center;
     font-size:14px;font-weight:900;letter-spacing:-.6px;color:#fff;
-    box-shadow:0 6px 18px -6px rgba(108,92,231,.9)}
+    box-shadow:0 6px 18px -6px rgba(236,86,71,.9)}
   .logo-t{font-size:14.5px;font-weight:700;letter-spacing:-.25px;white-space:nowrap}
   .logo-t i{font-style:normal;color:var(--dim);font-weight:500}
   .nav-r{display:flex;align-items:center;gap:6px}
@@ -85,8 +85,8 @@
   .nlink:hover{color:var(--ink);background:rgba(255,255,255,.05)}
   .nbtn{padding:9px 17px;border-radius:10px;font-size:13.5px;font-weight:600;color:#fff;
     text-decoration:none;white-space:nowrap;
-    background:linear-gradient(120deg,#6C5CE7,#7A5AE8 60%,#3BA9D9);
-    box-shadow:0 8px 22px -10px rgba(108,92,231,.95);
+    background:linear-gradient(120deg,#EC5647,#E04B3C 60%,#C9382B);
+    box-shadow:0 8px 22px -10px rgba(236,86,71,.95);
     transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .2s}
   .nbtn:hover{transform:translateY(-1.5px);filter:brightness(1.09)}
 
@@ -98,13 +98,13 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
   .badge b{color:#D8DAEA;font-weight:600}
   .live{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;
-    box-shadow:0 0 0 0 rgba(34,211,238,.65);animation:beat 2.8s ease-out infinite}
-  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}
-    70%{box-shadow:0 0 0 10px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+    box-shadow:0 0 0 0 rgba(201,56,43,.65);animation:beat 2.8s ease-out infinite}
+  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(201,56,43,.55)}
+    70%{box-shadow:0 0 0 10px rgba(201,56,43,0)}100%{box-shadow:0 0 0 0 rgba(201,56,43,0)}}
 
   h1{margin-top:30px;font-size:clamp(40px,7.4vw,76px);line-height:1.02;font-weight:800;
     letter-spacing:-.038em;max-width:15ch;margin-left:auto;margin-right:auto}
-  .grad{background:linear-gradient(105deg,#C4B5FD 0%,#8B7CF6 32%,#6C5CE7 58%,#22D3EE 100%);
+  .grad{background:linear-gradient(105deg,#FBB9B0 0%,#F0705F 32%,#EC5647 58%,#C9382B 100%);
     background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
     -webkit-text-fill-color:transparent;animation:slide 9s ease-in-out infinite}
   @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
@@ -122,15 +122,15 @@
     font-family:inherit;font-size:16px;outline:none;
     transition:border-color .22s,background .22s,box-shadow .22s}
   input[type=email]::placeholder{color:#5B5E75}
-  input[type=email]:focus{border-color:rgba(139,124,246,.7);background:rgba(255,255,255,.065);
-    box-shadow:0 0 0 4px rgba(108,92,231,.15)}
+  input[type=email]:focus{border-color:rgba(240,112,95,.7);background:rgba(255,255,255,.065);
+    box-shadow:0 0 0 4px rgba(236,86,71,.15)}
   .cta{flex:0 0 auto;height:56px;padding:0 28px;border:0;border-radius:14px;cursor:pointer;
     font-family:inherit;font-size:15.5px;font-weight:600;color:#fff;letter-spacing:.1px;white-space:nowrap;
-    background:linear-gradient(120deg,#6C5CE7,#7A5AE8 55%,#3BA9D9);
-    box-shadow:0 12px 32px -12px rgba(108,92,231,.95);
+    background:linear-gradient(120deg,#EC5647,#E04B3C 55%,#C9382B);
+    box-shadow:0 12px 32px -12px rgba(236,86,71,.95);
     transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .22s,box-shadow .22s}
   .cta:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.09);
-    box-shadow:0 18px 42px -14px rgba(108,92,231,1)}
+    box-shadow:0 18px 42px -14px rgba(236,86,71,1)}
   .cta:active:not(:disabled){transform:translateY(0)}
   .cta:disabled{opacity:.62;cursor:default}
   .fine{margin-top:15px;font-size:13px;color:var(--dim);display:flex;align-items:center;
@@ -141,11 +141,11 @@
   .msg{margin-top:18px;font-size:14px;line-height:1.6;display:none;border-radius:12px;padding:14px 18px;text-align:left}
   .msg.err{display:block;color:#FCA5A5;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.24)}
   .esito{display:none;margin:38px auto 0;max-width:512px;padding:30px 28px;text-align:left;
-    border:1px solid rgba(34,211,238,.26);border-radius:18px;
-    background:linear-gradient(160deg,rgba(34,211,238,.07),rgba(108,92,231,.05))}
+    border:1px solid rgba(201,56,43,.26);border-radius:18px;
+    background:linear-gradient(160deg,rgba(201,56,43,.07),rgba(236,86,71,.05))}
   .esito h3{font-size:18px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:11px}
   .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;
-    background:linear-gradient(135deg,#6C5CE7,#22D3EE);display:flex;align-items:center;justify-content:center}
+    background:linear-gradient(135deg,#EC5647,#C9382B);display:flex;align-items:center;justify-content:center}
   .esito h3 svg{width:14px;height:14px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .esito p{margin-top:12px;font-size:14.8px;line-height:1.68;color:var(--mute)}
   .esito p+p{margin-top:9px}
@@ -180,12 +180,12 @@
     background:linear-gradient(170deg,rgba(255,255,255,.042),rgba(255,255,255,.014));
     overflow:hidden;transition:border-color .3s,transform .3s cubic-bezier(.2,.9,.3,1)}
   .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s;
-    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(108,92,231,.16),transparent 62%)}
-  .card:hover{border-color:rgba(139,124,246,.3);transform:translateY(-4px)}
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(236,86,71,.16),transparent 62%)}
+  .card:hover{border-color:rgba(240,112,95,.3);transform:translateY(-4px)}
   .card:hover::before{opacity:1}
   .ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    border:1px solid rgba(139,124,246,.26);background:rgba(108,92,231,.11);position:relative}
-  .ico svg{width:20px;height:20px;stroke:#A78BFA;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    border:1px solid rgba(240,112,95,.26);background:rgba(236,86,71,.11);position:relative}
+  .ico svg{width:20px;height:20px;stroke:#F5847A;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin-top:20px;font-size:18px;font-weight:700;letter-spacing:-.32px;position:relative}
   .card p{margin-top:10px;font-size:14.8px;line-height:1.7;color:var(--mute);position:relative}
 
@@ -195,9 +195,9 @@
   .checks{margin-top:26px;display:flex;flex-direction:column;gap:13px}
   .chk{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.58;color:var(--mute)}
   .chk i{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
-    background:rgba(108,92,231,.16);border:1px solid rgba(139,124,246,.3);
+    background:rgba(236,86,71,.16);border:1px solid rgba(240,112,95,.3);
     display:flex;align-items:center;justify-content:center}
-  .chk i svg{width:10px;height:10px;stroke:#A78BFA;stroke-width:3.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .chk i svg{width:10px;height:10px;stroke:#F5847A;stroke-width:3.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .chk b{color:#D5D7E6;font-weight:600}
 
   .phone{position:relative;margin:0 auto;width:100%;max-width:330px;aspect-ratio:9/17.4;
@@ -205,7 +205,7 @@
     box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07);
     transition:transform .5s cubic-bezier(.2,.9,.3,1)}
   .phone:hover{transform:translateY(-8px) rotate(-.6deg)}
-  .screen{width:100%;height:100%;border-radius:30px;overflow:hidden;background:#05050A;position:relative}
+  .screen{width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0A0A0F;position:relative}
   .bar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
     font-size:10.5px;color:var(--faint);border-bottom:1px solid var(--line)}
   .feed{padding:16px 15px;display:flex;flex-direction:column;gap:13px;overflow:hidden;height:calc(100% - 34px);
@@ -219,8 +219,8 @@
   .mail .cat{font-size:8.5px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;color:var(--cyan)}
   .mail .tt{margin-top:6px;font-size:12.5px;line-height:1.34;font-weight:650;letter-spacing:-.2px}
   .mail .bd{margin-top:6px;font-size:10.5px;line-height:1.52;color:var(--faint)}
-  .mail.head-m{background:linear-gradient(160deg,rgba(108,92,231,.16),rgba(34,211,238,.06));
-    border-color:rgba(139,124,246,.24)}
+  .mail.head-m{background:linear-gradient(160deg,rgba(236,86,71,.16),rgba(201,56,43,.06));
+    border-color:rgba(240,112,95,.24)}
   .mail.head-m .tt{font-size:14px;font-weight:800;letter-spacing:-.35px}
 
   /* archivio */
@@ -229,13 +229,13 @@
   .arc{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),340px));gap:18px;justify-content:center}
   .num{display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
     background:var(--card);transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
-  .num:hover{border-color:rgba(139,124,246,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
+  .num:hover{border-color:rgba(240,112,95,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
   .num .d{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet-lt)}
   .num .t{margin-top:11px;font-size:16px;font-weight:650;line-height:1.38;letter-spacing:-.25px}
   .num .g{margin-top:14px;font-size:13px;color:var(--dim);display:flex;align-items:center;gap:6px}
   .num:hover .g{color:var(--violet-lt)}
   .tutti{margin-top:26px;text-align:center;font-size:14.5px}
-  .tutti a{color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.3);padding-bottom:2px}
+  .tutti a{color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.3);padding-bottom:2px}
   .tutti a:hover{border-bottom-color:var(--violet-lt)}
   .arc-empty{margin-top:34px;padding:34px 28px;border:1px dashed var(--line2);border-radius:18px;
     text-align:center;font-size:15px;color:var(--dim)}
@@ -260,10 +260,10 @@
 
   /* chiusura */
   .end{margin-top:110px;padding:64px 40px;border:1px solid var(--line2);border-radius:26px;text-align:center;
-    background:linear-gradient(160deg,rgba(108,92,231,.13),rgba(34,211,238,.05));position:relative;overflow:hidden}
+    background:linear-gradient(160deg,rgba(236,86,71,.13),rgba(201,56,43,.05));position:relative;overflow:hidden}
   .end::after{content:'';position:absolute;width:560px;height:560px;left:50%;top:-320px;
     transform:translateX(-50%);pointer-events:none;
-    background:radial-gradient(circle,rgba(108,92,231,.24),transparent 66%);filter:blur(50px)}
+    background:radial-gradient(circle,rgba(236,86,71,.24),transparent 66%);filter:blur(50px)}
   .end h2{position:relative}
   .end .sub{position:relative;margin-left:auto;margin-right:auto}
   .end .form-box{position:relative;margin-top:34px}
@@ -489,7 +489,7 @@
       <div class="eyebrow rise">Archivio</div>
       <h2 class="rise d1">Guarda com’è prima di iscriverti.</h2>
       <p class="sub rise d2">Ogni numero resta online per sempre, al suo indirizzo. Trovi sempre l’ultimo
-        <a href="ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(167,139,250,.34)">a questo link</a>.</p>
+        <a href="ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34)">a questo link</a>.</p>
     </div>
     <div class="arc" id="arc" hidden></div>
     <p class="tutti rise" id="tutti" hidden><a href="archivio/">Vedi tutti i numeri &nbsp;&rarr;</a></p>
