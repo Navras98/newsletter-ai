@@ -12,16 +12,17 @@
 <meta property="og:title" content="Andrea Sforna · AI" />
 <meta property="og:description" content="Le notizie sull’intelligenza artificiale che contano davvero. Solo quando c’è qualcosa da dire, in cinque minuti." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23EC5647'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B4BD6'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
 <style>
   /* ═══════════════════════════════════════════════════════════════
      Andrea Sforna · AI — foglio di stile della pagina d'ingresso.
 
      Tre regole, e tutto il resto discende da queste:
 
-     1. Il colore è raro. Il rosso compare su ciò che si tocca e su ciò
-        che numera, mai come decorazione. Niente sfumature: una tinta
-        piena si riconosce, una sfumatura si guarda.
+     1. Il colore è raro e freddo. Il viola compare su ciò che si tocca e
+        su ciò che numera; il ciano solo dove serve dire «questo è vivo».
+        Niente sfumature: una tinta piena si riconosce, una sfumatura si
+        guarda e basta.
      2. Le superfici si distinguono per un filo di bordo, non per
         un'ombra. Su fondo quasi nero le ombre non si vedono: si vede
         solo la sporcizia che lasciano.
@@ -35,9 +36,9 @@
     --mute:#B4B7C4;      /* testo di servizio: 9,3:1 sul fondo */
     --dim:#8C90A0;       /* note e didascalie: 5,6:1 */
     --faint:#7A7E8C;     /* il grigio più basso ammesso: 4,6:1 */
-    --rosso:#EC5647;     /* l'accento: bordi vivi, numeri, occhielli */
-    --rosso-btn:#D33F2D; /* solo dove sopra ci va del bianco: 4,65:1 */
-    --rosso-lt:#F5847A;  /* il secondo e ultimo: testo colorato piccolo */
+    --viola:#8B7BFF;     /* l'accento: testo colorato, numeri, occhielli — 6,0:1 */
+    --viola-btn:#5B4BD6; /* solo dove sopra ci va del bianco: 6,1:1 */
+    --ciano:#22D3EE;     /* il secondo e ultimo: dettagli minuti — 10,9:1 */
     --line:rgba(255,255,255,.07);
     --line2:rgba(255,255,255,.13);
     --card:rgba(255,255,255,.022);
@@ -56,15 +57,15 @@
     font-size:17.5px; line-height:1.6;
     font-synthesis-weight:none;
   }
-  ::selection{background:rgba(236,86,71,.34)}
+  ::selection{background:rgba(139,123,255,.34)}
   img{max-width:100%;height:auto;display:block}
   a{color:inherit}
-  :focus-visible{outline:2px solid var(--rosso-lt);outline-offset:3px;border-radius:6px}
+  :focus-visible{outline:2px solid var(--viola);outline-offset:3px;border-radius:6px}
 
   /* Un solo alone, fermo, appena sopra la piega: dà profondità al nero
      senza chiedere alla scheda grafica di animare nulla. */
   .bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(760px 420px at 50% -12%,rgba(236,86,71,.13),transparent 70%)}
+    background:radial-gradient(760px 420px at 50% -12%,rgba(139,123,255,.13),transparent 70%)}
 
   .wrap{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
@@ -76,7 +77,7 @@
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-  .logo-b{width:28px;height:28px;border-radius:8px;flex-shrink:0;background:var(--rosso-btn);
+  .logo-b{width:28px;height:28px;border-radius:8px;flex-shrink:0;background:var(--viola-btn);
     display:flex;align-items:center;justify-content:center;
     font-size:13.5px;font-weight:700;letter-spacing:-.4px;color:#fff}
   .logo-t{font-size:15px;font-weight:600;letter-spacing:-.2px;white-space:nowrap}
@@ -86,8 +87,8 @@
     text-decoration:none;white-space:nowrap;transition:color var(--t) var(--ease)}
   .nlink:hover{color:var(--ink)}
   .nbtn{padding:9px 16px;border-radius:10px;font-size:14.5px;font-weight:550;color:#fff;
-    text-decoration:none;white-space:nowrap;background:var(--rosso-btn);
-    border:1px solid var(--rosso-btn);
+    text-decoration:none;white-space:nowrap;background:var(--viola-btn);
+    border:1px solid var(--viola-btn);
     transition:filter var(--t) var(--ease)}
   .nbtn:hover{filter:brightness(1.12)}
 
@@ -98,13 +99,13 @@
     border:1px solid var(--line2);border-radius:999px;background:var(--card);
     font-size:14px;font-weight:450;color:var(--mute);line-height:1.4}
   .badge b{color:var(--ink);font-weight:550}
-  .live{width:6px;height:6px;border-radius:50%;background:var(--rosso);flex-shrink:0}
+  .live{width:6px;height:6px;border-radius:50%;background:var(--ciano);flex-shrink:0}
 
   h1{margin-top:30px;font-size:clamp(44px,8.4vw,88px);line-height:1.03;font-weight:680;
     letter-spacing:-.035em;max-width:14ch;margin-left:auto;margin-right:auto}
   /* il titolo non è colorato a metà: la seconda riga è semplicemente più
      chiara, e la differenza si legge anche a occhi stanchi */
-  .grad{color:var(--rosso-lt)}
+  .grad{color:var(--viola)}
   .lead{margin:24px auto 0;max-width:min(var(--testo),620px);font-size:18px;line-height:1.6;color:var(--mute)}
   .lead b{color:var(--ink);font-weight:550}
 
@@ -120,11 +121,11 @@
     transition:border-color var(--t) var(--ease),background var(--t) var(--ease)}
   input[type=email]::placeholder{color:var(--faint)}
   input[type=email]:hover{border-color:rgba(255,255,255,.2)}
-  input[type=email]:focus-visible{outline:none;border-color:var(--rosso);
-    background:rgba(255,255,255,.05);box-shadow:0 0 0 3px rgba(236,86,71,.22)}
-  .cta{flex:0 0 auto;height:54px;padding:0 26px;border:1px solid var(--rosso-btn);border-radius:12px;cursor:pointer;
+  input[type=email]:focus-visible{outline:none;border-color:var(--viola);
+    background:rgba(255,255,255,.05);box-shadow:0 0 0 3px rgba(139,123,255,.22)}
+  .cta{flex:0 0 auto;height:54px;padding:0 26px;border:1px solid var(--viola-btn);border-radius:12px;cursor:pointer;
     font-family:inherit;font-size:16px;font-weight:550;color:#fff;white-space:nowrap;
-    background:var(--rosso-btn);transition:filter var(--t) var(--ease)}
+    background:var(--viola-btn);transition:filter var(--t) var(--ease)}
   .cta:hover:not(:disabled){filter:brightness(1.12)}
   .cta:disabled{opacity:.55;cursor:default}
   .fine{margin-top:14px;font-size:14px;color:var(--dim);display:flex;align-items:center;
@@ -137,7 +138,7 @@
   .esito{display:none;margin:36px auto 0;max-width:520px;padding:26px 24px;text-align:left;
     border:1px solid var(--line2);border-radius:var(--r);background:var(--card)}
   .esito h3{font-size:19px;font-weight:600;letter-spacing:-.2px;display:flex;align-items:center;gap:11px}
-  .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--rosso-btn);
+  .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--viola-btn);
     display:flex;align-items:center;justify-content:center}
   .esito h3 svg{width:13px;height:13px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .esito p{margin-top:11px;font-size:16px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
@@ -160,7 +161,7 @@
   /* ═══════════ sezioni ═══════════ */
   section{position:relative;z-index:2}
   .sec{padding-top:120px}
-  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--rosso-lt)}
+  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--viola)}
   h2{margin-top:14px;font-size:clamp(30px,4.6vw,46px);line-height:1.12;font-weight:660;letter-spacing:-.028em}
   .sub{margin-top:16px;font-size:17.5px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
   .head{text-align:center}
@@ -173,7 +174,7 @@
   .card:hover{border-color:var(--line2);background:rgba(255,255,255,.035)}
   .ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
     border:1px solid var(--line2);background:transparent}
-  .ico svg{width:19px;height:19px;stroke:var(--rosso-lt);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .ico svg{width:19px;height:19px;stroke:var(--viola);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin-top:18px;font-size:19px;font-weight:600;letter-spacing:-.2px}
   .card p{margin-top:9px;font-size:16px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
 
@@ -181,43 +182,38 @@
   /* Il pezzo forte della pagina è vedere com'è fatta l'email: quindi non un
      telefonino stilizzato di lato, ma la finestra di un programma di posta,
      larga, con la sua barra e la sua intestazione. */
-  .show{margin-top:52px;display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+  .show{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
   .show-t .sub{margin-top:18px}
   .checks{margin-top:24px;display:flex;flex-direction:column;gap:12px}
   .chk{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55;color:var(--mute)}
   .chk i{width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:3px;
     border:1px solid var(--line2);display:flex;align-items:center;justify-content:center}
-  .chk i svg{width:9px;height:9px;stroke:var(--rosso-lt);stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .chk i svg{width:9px;height:9px;stroke:var(--viola);stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .chk b{color:var(--ink);font-weight:550}
 
-  .phone{position:relative;width:100%;border:1px solid var(--line2);border-radius:var(--r);
-    background:#0C0C12;overflow:hidden;
+  .phone{position:relative;margin:0 auto;width:100%;max-width:330px;aspect-ratio:9/17.6;
+    border-radius:38px;padding:8px;background:#15151E;
+    border:1px solid var(--line2);
     transition:border-color var(--t) var(--ease)}
-  .phone:hover{border-color:rgba(255,255,255,.2)}
-  .screen{width:100%;position:relative}
-  /* la barra del programma: tre pallini e il nome della cartella */
-  .bar{height:38px;display:flex;align-items:center;gap:8px;padding:0 14px;
-    border-bottom:1px solid var(--line);font-size:12.5px;color:var(--faint)}
-  .bar span{display:inline-flex;align-items:center;gap:8px}
-  .bar span:first-child::before{content:'';width:9px;height:9px;border-radius:50%;flex:0 0 auto;
-    background:var(--line2);box-shadow:15px 0 0 var(--line2),30px 0 0 var(--line2);
-    margin-right:30px}
-  .bar span:last-child{margin-left:auto}
-  .feed{padding:14px;display:flex;flex-direction:column;gap:1px}
-  /* le righe della posta: separate da un filo, non da una scatola ciascuna.
-     È così che si presenta una casella vera. */
-  .mail{border-radius:10px;padding:13px 14px;border:1px solid transparent;
-    transition:background var(--t) var(--ease)}
-  .mail+.mail{border-top-color:var(--line)}
-  .mail:hover{background:rgba(255,255,255,.03)}
-  .mail .cat{font-size:10.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--faint)}
-  .mail .tt{margin-top:6px;font-size:15px;line-height:1.36;font-weight:550;letter-spacing:-.15px}
-  .mail .bd{margin-top:5px;font-size:13.5px;line-height:1.5;color:var(--dim)}
-  /* la prima è quella nuova: la dice il bordo rosso a sinistra, non un fondo */
-  .mail.head-m{border-color:var(--line);background:rgba(255,255,255,.028);
-    border-left:2px solid var(--rosso);border-radius:10px}
-  .mail.head-m .cat{color:var(--rosso-lt)}
-  .mail.head-m .tt{font-size:16.5px;font-weight:620;letter-spacing:-.25px}
+  .phone:hover{border-color:rgba(255,255,255,.22)}
+  /* la tacca in alto: due tratti, niente di più */
+  .phone::before{content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);
+    width:78px;height:5px;border-radius:3px;background:rgba(255,255,255,.14);z-index:3}
+  .screen{width:100%;height:100%;border-radius:31px;overflow:hidden;background:var(--bg);position:relative}
+  .bar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+    font-size:12px;color:var(--faint);border-bottom:1px solid var(--line)}
+  .feed{padding:13px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden;
+    height:calc(100% - 40px);
+    -webkit-mask-image:linear-gradient(#000 82%,transparent);
+            mask-image:linear-gradient(#000 82%,transparent)}
+  .mail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--card)}
+  .mail .cat{font-size:8.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--faint)}
+  .mail .tt{margin-top:5px;font-size:12.5px;line-height:1.34;font-weight:550;letter-spacing:-.15px}
+  .mail .bd{margin-top:5px;font-size:10.5px;line-height:1.5;color:var(--dim)}
+  /* la nuova si riconosce dal filo di colore a sinistra, non da un fondo */
+  .mail.head-m{border-left:2px solid var(--viola);background:rgba(139,123,255,.07)}
+  .mail.head-m .cat{color:var(--ciano)}
+  .mail.head-m .tt{font-size:13.5px;font-weight:620;letter-spacing:-.25px}
 
   /* archivio */
   /* auto-fit, non auto-fill: le colonne vuote spariscono, cosi' con un numero
@@ -226,16 +222,16 @@
   .num{display:block;text-decoration:none;padding:22px 22px 24px;border:1px solid var(--line);border-radius:var(--r);
     background:var(--card);transition:border-color var(--t) var(--ease),background var(--t) var(--ease)}
   .num:hover{border-color:var(--line2);background:rgba(255,255,255,.035)}
-  .num .d{font-size:12.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--rosso-lt)}
+  .num .d{font-size:12.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--viola)}
   .num .t{margin-top:10px;font-size:17px;font-weight:550;line-height:1.38;letter-spacing:-.2px}
   .num .g{margin-top:13px;font-size:14px;color:var(--dim);display:flex;align-items:center;gap:6px}
   .tutti{margin-top:24px;text-align:center;font-size:16px}
-  .tutti a{color:var(--rosso-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34);padding-bottom:2px;
+  .tutti a{color:var(--viola);text-decoration:none;border-bottom:1px solid rgba(139,123,255,.34);padding-bottom:2px;
     transition:border-color var(--t) var(--ease)}
-  .tutti a:hover{border-bottom-color:var(--rosso-lt)}
-  .linkc{color:var(--rosso-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34);
+  .tutti a:hover{border-bottom-color:var(--viola)}
+  .linkc{color:var(--viola);text-decoration:none;border-bottom:1px solid rgba(139,123,255,.34);
     transition:border-color var(--t) var(--ease)}
-  .linkc:hover{border-bottom-color:var(--rosso-lt)}
+  .linkc:hover{border-bottom-color:var(--viola)}
   .arc-empty{margin-top:32px;padding:30px 26px;border:1px dashed var(--line2);border-radius:var(--r);
     text-align:center;font-size:16px;color:var(--dim)}
 
@@ -245,7 +241,7 @@
   .q summary{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
     padding:22px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;
     font-size:17.5px;font-weight:550;color:var(--ink);letter-spacing:-.15px;transition:color var(--t) var(--ease)}
-  .q summary:hover{color:var(--rosso-lt)}
+  .q summary:hover{color:var(--viola)}
   .q .pm{width:22px;height:22px;flex-shrink:0;position:relative}
   .q .pm::before,.q .pm::after{content:'';position:absolute;top:50%;left:50%;background:var(--dim);
     border-radius:2px;transform:translate(-50%,-50%);
@@ -253,7 +249,7 @@
   .q .pm::before{width:13px;height:1.6px}
   .q .pm::after{width:1.6px;height:13px}
   .q[open] .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
-  .q[open] .pm::before,.q[open] .pm::after{background:var(--rosso-lt)}
+  .q[open] .pm::before,.q[open] .pm::after{background:var(--viola)}
   .a{overflow:hidden;height:0;transition:height .3s var(--ease)}
   .a p{padding:0 4px 24px;font-size:16.5px;line-height:1.68;color:var(--mute);max-width:var(--testo)}
 
@@ -314,11 +310,7 @@
     .arc{margin-top:30px}
     .num{max-width:none}
     .show{margin-top:38px}
-    .bar{height:34px;font-size:12px}
-    .feed{padding:11px}
-    .mail{padding:12px}
-    .mail .tt{font-size:14.5px}
-    .mail.head-m .tt{font-size:15.5px}
+    .phone{max-width:292px}
     .q summary{padding:19px 2px;font-size:16.5px}
     .a p{padding-bottom:20px;font-size:16px}
     .end{margin-top:88px;padding:40px 22px}
