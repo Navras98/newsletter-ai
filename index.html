@@ -13,332 +13,333 @@
 <meta property="og:description" content="Le notizie sull’intelligenza artificiale che contano davvero. Solo quando c’è qualcosa da dire, in cinque minuti." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23EC5647'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+  /* ═══════════════════════════════════════════════════════════════
+     Andrea Sforna · AI — foglio di stile della pagina d'ingresso.
+
+     Tre regole, e tutto il resto discende da queste:
+
+     1. Il colore è raro. Il rosso compare su ciò che si tocca e su ciò
+        che numera, mai come decorazione. Niente sfumature: una tinta
+        piena si riconosce, una sfumatura si guarda.
+     2. Le superfici si distinguono per un filo di bordo, non per
+        un'ombra. Su fondo quasi nero le ombre non si vedono: si vede
+        solo la sporcizia che lasciano.
+     3. Il movimento accompagna, non annuncia. Dodici pixel e una
+        dissolvenza; chi ha chiesto meno movimento non ne riceve nessuno.
+     ═══════════════════════════════════════════════════════════════ */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#0A0A0F; --bg2:#101018;
-    --ink:#FFFFFF; --mute:#A9ACC2; --dim:#7B7E96; --faint:#565971;
-    --violet:#EC5647; --violet-lt:#F5847A; --cyan:#C9382B;
-    --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.12);
-    --card:rgba(255,255,255,.026);
-    --pad:28px; --max:1280px;
+    --bg:#0A0A0F;
+    --ink:#FFFFFF;
+    --mute:#B4B7C4;      /* testo di servizio: 9,3:1 sul fondo */
+    --dim:#8C90A0;       /* note e didascalie: 5,6:1 */
+    --faint:#7A7E8C;     /* il grigio più basso ammesso: 4,6:1 */
+    --rosso:#EC5647;     /* l'accento: bordi vivi, numeri, occhielli */
+    --rosso-btn:#D33F2D; /* solo dove sopra ci va del bianco: 4,65:1 */
+    --rosso-lt:#F5847A;  /* il secondo e ultimo: testo colorato piccolo */
+    --line:rgba(255,255,255,.07);
+    --line2:rgba(255,255,255,.13);
+    --card:rgba(255,255,255,.022);
+    --r:14px;            /* il raggio di casa */
+    --ease:cubic-bezier(.22,1,.36,1);
+    --t:.24s;
+    --pad:24px; --max:1120px; --testo:68ch;
   }
   html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
   body{
-    background:var(--bg); color:var(--ink); overflow-x:hidden; position:relative;
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-    font-size:16px; line-height:1.6;
+    background:var(--bg); color:var(--ink); overflow-x:hidden;
+    /* nessun font scaricato: quello di sistema è già variabile, è già
+       installato, e non costa una richiesta né un'attesa */
+    font-family:system-ui,-apple-system,'Segoe UI Variable Text','Segoe UI',
+                Roboto,Helvetica,Arial,sans-serif;
+    font-size:17.5px; line-height:1.6;
+    font-synthesis-weight:none;
   }
-  ::selection{background:rgba(236,86,71,.42)}
+  ::selection{background:rgba(236,86,71,.34)}
   img{max-width:100%;height:auto;display:block}
   a{color:inherit}
+  :focus-visible{outline:2px solid var(--rosso-lt);outline-offset:3px;border-radius:6px}
 
-  /* ═══════════ fondale ═══════════ */
-  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .blob{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform}
-  .b1{width:min(820px,150vw);aspect-ratio:1;top:-38vh;left:50%;
-      background:radial-gradient(circle,rgba(236,86,71,.36),rgba(236,86,71,0) 66%);
-      animation:drift1 24s ease-in-out infinite}
-  .b2{width:min(660px,130vw);aspect-ratio:1;top:4vh;left:50%;
-      background:radial-gradient(circle,rgba(201,56,43,.20),rgba(201,56,43,0) 66%);
-      animation:drift2 30s ease-in-out infinite}
-  .b3{width:min(700px,140vw);aspect-ratio:1;top:118vh;left:50%;
-      background:radial-gradient(circle,rgba(245,132,122,.14),rgba(245,132,122,0) 68%);
-      animation:drift1 34s ease-in-out infinite reverse}
-  @keyframes drift1{
-    0%,100%{transform:translate(-58%,0) scale(1)}
-    50%{transform:translate(-46%,5vh) scale(1.12)}}
-  @keyframes drift2{
-    0%,100%{transform:translate(14%,0) scale(1)}
-    50%{transform:translate(-6%,7vh) scale(1.16)}}
-  .mesh{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
-    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-    background-size:68px 68px;
-    -webkit-mask-image:radial-gradient(ellipse 92% 50% at 50% 8%,#000 18%,transparent 76%);
-            mask-image:radial-gradient(ellipse 92% 50% at 50% 8%,#000 18%,transparent 76%)}
-  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* Un solo alone, fermo, appena sopra la piega: dà profondità al nero
+     senza chiedere alla scheda grafica di animare nulla. */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(760px 420px at 50% -12%,rgba(236,86,71,.13),transparent 70%)}
 
   .wrap{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
   /* ═══════════ barra ═══════════ */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s}
-  .nav::after{content:'';position:absolute;inset:0;border-bottom:1px solid transparent;transition:border-color .3s}
-  .nav.on{background:rgba(10,10,15,.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
-  .nav.on::after{border-bottom-color:var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    border-bottom:1px solid transparent;
+    transition:background var(--t) var(--ease),border-color var(--t) var(--ease)}
+  .nav.on{background:rgba(10,10,15,.86);border-bottom-color:var(--line);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-  .logo-b{width:30px;height:30px;border-radius:9px;flex-shrink:0;
-    background:linear-gradient(135deg,#EC5647,#C9382B);
+  .logo-b{width:28px;height:28px;border-radius:8px;flex-shrink:0;background:var(--rosso-btn);
     display:flex;align-items:center;justify-content:center;
-    font-size:14px;font-weight:900;letter-spacing:-.6px;color:#fff;
-    box-shadow:0 6px 18px -6px rgba(236,86,71,.9)}
-  .logo-t{font-size:14.5px;font-weight:700;letter-spacing:-.25px;white-space:nowrap}
-  .logo-t i{font-style:normal;color:var(--dim);font-weight:500}
-  .nav-r{display:flex;align-items:center;gap:6px}
-  .nlink{padding:8px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--mute);
-    text-decoration:none;transition:color .2s,background .2s;white-space:nowrap}
-  .nlink:hover{color:var(--ink);background:rgba(255,255,255,.05)}
-  .nbtn{padding:9px 17px;border-radius:10px;font-size:13.5px;font-weight:600;color:#fff;
-    text-decoration:none;white-space:nowrap;
-    background:linear-gradient(120deg,#EC5647,#E04B3C 60%,#C9382B);
-    box-shadow:0 8px 22px -10px rgba(236,86,71,.95);
-    transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .2s}
-  .nbtn:hover{transform:translateY(-1.5px);filter:brightness(1.09)}
+    font-size:13.5px;font-weight:700;letter-spacing:-.4px;color:#fff}
+  .logo-t{font-size:15px;font-weight:600;letter-spacing:-.2px;white-space:nowrap}
+  .logo-t i{font-style:normal;color:var(--dim);font-weight:400}
+  .nav-r{display:flex;align-items:center;gap:4px}
+  .nlink{padding:8px 12px;border-radius:8px;font-size:14.5px;font-weight:450;color:var(--mute);
+    text-decoration:none;white-space:nowrap;transition:color var(--t) var(--ease)}
+  .nlink:hover{color:var(--ink)}
+  .nbtn{padding:9px 16px;border-radius:10px;font-size:14.5px;font-weight:550;color:#fff;
+    text-decoration:none;white-space:nowrap;background:var(--rosso-btn);
+    border:1px solid var(--rosso-btn);
+    transition:filter var(--t) var(--ease)}
+  .nbtn:hover{filter:brightness(1.12)}
 
   /* ═══════════ apertura ═══════════ */
-  .hero{padding-top:132px;text-align:center;position:relative}
-  .badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 11px;
+  .hero{padding-top:136px;text-align:center;position:relative}
+  .badge{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    text-align:center;gap:4px 9px;padding:7px 15px 7px 12px;
     border:1px solid var(--line2);border-radius:999px;background:var(--card);
-    font-size:12.5px;font-weight:500;color:var(--mute);letter-spacing:.1px;
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-  .badge b{color:#D8DAEA;font-weight:600}
-  .live{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;
-    box-shadow:0 0 0 0 rgba(201,56,43,.65);animation:beat 2.8s ease-out infinite}
-  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(201,56,43,.55)}
-    70%{box-shadow:0 0 0 10px rgba(201,56,43,0)}100%{box-shadow:0 0 0 0 rgba(201,56,43,0)}}
+    font-size:14px;font-weight:450;color:var(--mute);line-height:1.4}
+  .badge b{color:var(--ink);font-weight:550}
+  .live{width:6px;height:6px;border-radius:50%;background:var(--rosso);flex-shrink:0}
 
-  h1{margin-top:30px;font-size:clamp(40px,7.4vw,76px);line-height:1.02;font-weight:800;
-    letter-spacing:-.038em;max-width:15ch;margin-left:auto;margin-right:auto}
-  .grad{background:linear-gradient(105deg,#FBB9B0 0%,#F0705F 32%,#EC5647 58%,#C9382B 100%);
-    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;animation:slide 9s ease-in-out infinite}
-  @keyframes slide{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-  .lead{margin:26px auto 0;max-width:600px;font-size:clamp(16.5px,2.1vw,19px);line-height:1.66;color:var(--mute)}
-  .lead b{color:#D5D7E6;font-weight:600}
+  h1{margin-top:30px;font-size:clamp(44px,8.4vw,88px);line-height:1.03;font-weight:680;
+    letter-spacing:-.035em;max-width:14ch;margin-left:auto;margin-right:auto}
+  /* il titolo non è colorato a metà: la seconda riga è semplicemente più
+     chiara, e la differenza si legge anche a occhi stanchi */
+  .grad{color:var(--rosso-lt)}
+  .lead{margin:24px auto 0;max-width:min(var(--testo),620px);font-size:18px;line-height:1.6;color:var(--mute)}
+  .lead b{color:var(--ink);font-weight:550}
 
   /* modulo */
   /* campo trappola: invisibile a chi legge, i robot lo riempiono e vengono scartati */
   .tp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
-  .form-box{margin:38px auto 0;max-width:512px;width:100%}
+  .form-box{margin:36px auto 0;max-width:520px;width:100%}
   form{display:flex;gap:10px;position:relative}
   .field{flex:1 1 auto;min-width:0;position:relative}
-  input[type=email]{width:100%;height:56px;padding:0 20px;border-radius:14px;
-    border:1px solid var(--line2);background:rgba(255,255,255,.045);color:var(--ink);
-    font-family:inherit;font-size:16px;outline:none;
-    transition:border-color .22s,background .22s,box-shadow .22s}
-  input[type=email]::placeholder{color:#5B5E75}
-  input[type=email]:focus{border-color:rgba(240,112,95,.7);background:rgba(255,255,255,.065);
-    box-shadow:0 0 0 4px rgba(236,86,71,.15)}
-  .cta{flex:0 0 auto;height:56px;padding:0 28px;border:0;border-radius:14px;cursor:pointer;
-    font-family:inherit;font-size:15.5px;font-weight:600;color:#fff;letter-spacing:.1px;white-space:nowrap;
-    background:linear-gradient(120deg,#EC5647,#E04B3C 55%,#C9382B);
-    box-shadow:0 12px 32px -12px rgba(236,86,71,.95);
-    transition:transform .18s cubic-bezier(.34,1.4,.64,1),filter .22s,box-shadow .22s}
-  .cta:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.09);
-    box-shadow:0 18px 42px -14px rgba(236,86,71,1)}
-  .cta:active:not(:disabled){transform:translateY(0)}
-  .cta:disabled{opacity:.62;cursor:default}
-  .fine{margin-top:15px;font-size:13px;color:var(--dim);display:flex;align-items:center;
+  input[type=email]{width:100%;height:54px;padding:0 18px;border-radius:12px;
+    border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--ink);
+    font-family:inherit;font-size:17px;outline:none;
+    transition:border-color var(--t) var(--ease),background var(--t) var(--ease)}
+  input[type=email]::placeholder{color:var(--faint)}
+  input[type=email]:hover{border-color:rgba(255,255,255,.2)}
+  input[type=email]:focus-visible{outline:none;border-color:var(--rosso);
+    background:rgba(255,255,255,.05);box-shadow:0 0 0 3px rgba(236,86,71,.22)}
+  .cta{flex:0 0 auto;height:54px;padding:0 26px;border:1px solid var(--rosso-btn);border-radius:12px;cursor:pointer;
+    font-family:inherit;font-size:16px;font-weight:550;color:#fff;white-space:nowrap;
+    background:var(--rosso-btn);transition:filter var(--t) var(--ease)}
+  .cta:hover:not(:disabled){filter:brightness(1.12)}
+  .cta:disabled{opacity:.55;cursor:default}
+  .fine{margin-top:14px;font-size:14px;color:var(--dim);display:flex;align-items:center;
     justify-content:center;gap:6px 10px;flex-wrap:wrap}
   .fine span{white-space:nowrap;display:inline-flex;align-items:center;gap:10px}
   .fine span+span::before{content:'·';color:var(--faint)}
 
-  .msg{margin-top:18px;font-size:14px;line-height:1.6;display:none;border-radius:12px;padding:14px 18px;text-align:left}
-  .msg.err{display:block;color:#FCA5A5;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.24)}
-  .esito{display:none;margin:38px auto 0;max-width:512px;padding:30px 28px;text-align:left;
-    border:1px solid rgba(201,56,43,.26);border-radius:18px;
-    background:linear-gradient(160deg,rgba(201,56,43,.07),rgba(236,86,71,.05))}
-  .esito h3{font-size:18px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:11px}
-  .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;
-    background:linear-gradient(135deg,#EC5647,#C9382B);display:flex;align-items:center;justify-content:center}
-  .esito h3 svg{width:14px;height:14px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .esito p{margin-top:12px;font-size:14.8px;line-height:1.68;color:var(--mute)}
+  .msg{margin-top:16px;font-size:15px;line-height:1.6;display:none;border-radius:12px;padding:13px 16px;text-align:left}
+  .msg.err{display:block;color:#FCA5A5;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.22)}
+  .esito{display:none;margin:36px auto 0;max-width:520px;padding:26px 24px;text-align:left;
+    border:1px solid var(--line2);border-radius:var(--r);background:var(--card)}
+  .esito h3{font-size:19px;font-weight:600;letter-spacing:-.2px;display:flex;align-items:center;gap:11px}
+  .esito h3 span{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--rosso-btn);
+    display:flex;align-items:center;justify-content:center}
+  .esito h3 svg{width:13px;height:13px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .esito p{margin-top:11px;font-size:16px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
   .esito p+p{margin-top:9px}
   body.ok .form-box{display:none}
-  body.ok .esito{display:block;animation:pop .5s cubic-bezier(.2,.9,.3,1.1) both}
-  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  body.ok .esito{display:block}
 
   /* nastro argomenti */
-  .strip{margin-top:66px;position:relative;overflow:hidden;
+  .strip{margin-top:60px;position:relative;overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
             mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-  .strip-t{font-size:10.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;
-    color:var(--faint);text-align:center;margin-bottom:20px}
-  .track{display:flex;gap:12px;width:max-content;animation:run 42s linear infinite}
+  .strip-t{font-size:11.5px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;
+    color:var(--faint);text-align:center;margin-bottom:18px}
+  .track{display:flex;gap:10px;width:max-content;animation:run 52s linear infinite}
   .strip:hover .track{animation-play-state:paused}
-  .tag{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);
-    font-size:13px;color:var(--dim);white-space:nowrap;font-weight:500}
+  .tag{padding:8px 15px;border:1px solid var(--line);border-radius:999px;background:var(--card);
+    font-size:14px;color:var(--dim);white-space:nowrap}
   @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ═══════════ sezioni ═══════════ */
   section{position:relative;z-index:2}
-  .sec{padding-top:110px}
-  .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;color:var(--violet-lt)}
-  h2{margin-top:14px;font-size:clamp(29px,4.4vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.032em}
-  .sub{margin-top:16px;font-size:16.5px;line-height:1.68;color:var(--mute);max-width:560px}
+  .sec{padding-top:120px}
+  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--rosso-lt)}
+  h2{margin-top:14px;font-size:clamp(30px,4.6vw,46px);line-height:1.12;font-weight:660;letter-spacing:-.028em}
+  .sub{margin-top:16px;font-size:17.5px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
   .head{text-align:center}
   .head .sub{margin-left:auto;margin-right:auto}
 
   /* tre carte */
-  .cards{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .card{position:relative;padding:32px 28px 34px;border:1px solid var(--line);border-radius:20px;
-    background:linear-gradient(170deg,rgba(255,255,255,.042),rgba(255,255,255,.014));
-    overflow:hidden;transition:border-color .3s,transform .3s cubic-bezier(.2,.9,.3,1)}
-  .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s;
-    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(236,86,71,.16),transparent 62%)}
-  .card:hover{border-color:rgba(240,112,95,.3);transform:translateY(-4px)}
-  .card:hover::before{opacity:1}
-  .ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    border:1px solid rgba(240,112,95,.26);background:rgba(236,86,71,.11);position:relative}
-  .ico svg{width:20px;height:20px;stroke:#F5847A;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .card h3{margin-top:20px;font-size:18px;font-weight:700;letter-spacing:-.32px;position:relative}
-  .card p{margin-top:10px;font-size:14.8px;line-height:1.7;color:var(--mute);position:relative}
+  .cards{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{position:relative;padding:28px 26px 30px;border:1px solid var(--line);border-radius:var(--r);
+    background:var(--card);transition:border-color var(--t) var(--ease),background var(--t) var(--ease)}
+  .card:hover{border-color:var(--line2);background:rgba(255,255,255,.035)}
+  .ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line2);background:transparent}
+  .ico svg{width:19px;height:19px;stroke:var(--rosso-lt);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{margin-top:18px;font-size:19px;font-weight:600;letter-spacing:-.2px}
+  .card p{margin-top:9px;font-size:16px;line-height:1.62;color:var(--mute);max-width:var(--testo)}
 
-  /* anteprima */
-  .show{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  /* ═══════════ l'email, che qui è la protagonista ═══════════ */
+  /* Il pezzo forte della pagina è vedere com'è fatta l'email: quindi non un
+     telefonino stilizzato di lato, ma la finestra di un programma di posta,
+     larga, con la sua barra e la sua intestazione. */
+  .show{margin-top:52px;display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
   .show-t .sub{margin-top:18px}
-  .checks{margin-top:26px;display:flex;flex-direction:column;gap:13px}
-  .chk{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.58;color:var(--mute)}
-  .chk i{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
-    background:rgba(236,86,71,.16);border:1px solid rgba(240,112,95,.3);
-    display:flex;align-items:center;justify-content:center}
-  .chk i svg{width:10px;height:10px;stroke:#F5847A;stroke-width:3.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .chk b{color:#D5D7E6;font-weight:600}
+  .checks{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+  .chk{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55;color:var(--mute)}
+  .chk i{width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:3px;
+    border:1px solid var(--line2);display:flex;align-items:center;justify-content:center}
+  .chk i svg{width:9px;height:9px;stroke:var(--rosso-lt);stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .chk b{color:var(--ink);font-weight:550}
 
-  .phone{position:relative;margin:0 auto;width:100%;max-width:330px;aspect-ratio:9/17.4;
-    border-radius:38px;padding:9px;background:linear-gradient(160deg,#25253a,#101018);
-    box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07);
-    transition:transform .5s cubic-bezier(.2,.9,.3,1)}
-  .phone:hover{transform:translateY(-8px) rotate(-.6deg)}
-  .screen{width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0A0A0F;position:relative}
-  .bar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
-    font-size:10.5px;color:var(--faint);border-bottom:1px solid var(--line)}
-  .feed{padding:16px 15px;display:flex;flex-direction:column;gap:13px;overflow:hidden;height:calc(100% - 34px);
-    -webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}
-  .mail{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:rgba(255,255,255,.026);
-    opacity:0;transform:translateY(12px);animation:in .6s cubic-bezier(.2,.9,.3,1) forwards}
-  .mail:nth-child(1){animation-delay:.15s}.mail:nth-child(2){animation-delay:.32s}
-  .mail:nth-child(3){animation-delay:.49s}.mail:nth-child(4){animation-delay:.66s}
-  .mail:nth-child(5){animation-delay:.83s}.mail:nth-child(6){animation-delay:1s}
-  @keyframes in{to{opacity:1;transform:none}}
-  .mail .cat{font-size:8.5px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;color:var(--cyan)}
-  .mail .tt{margin-top:6px;font-size:12.5px;line-height:1.34;font-weight:650;letter-spacing:-.2px}
-  .mail .bd{margin-top:6px;font-size:10.5px;line-height:1.52;color:var(--faint)}
-  .mail.head-m{background:linear-gradient(160deg,rgba(236,86,71,.16),rgba(201,56,43,.06));
-    border-color:rgba(240,112,95,.24)}
-  .mail.head-m .tt{font-size:14px;font-weight:800;letter-spacing:-.35px}
+  .phone{position:relative;width:100%;border:1px solid var(--line2);border-radius:var(--r);
+    background:#0C0C12;overflow:hidden;
+    transition:border-color var(--t) var(--ease)}
+  .phone:hover{border-color:rgba(255,255,255,.2)}
+  .screen{width:100%;position:relative}
+  /* la barra del programma: tre pallini e il nome della cartella */
+  .bar{height:38px;display:flex;align-items:center;gap:8px;padding:0 14px;
+    border-bottom:1px solid var(--line);font-size:12.5px;color:var(--faint)}
+  .bar span{display:inline-flex;align-items:center;gap:8px}
+  .bar span:first-child::before{content:'';width:9px;height:9px;border-radius:50%;flex:0 0 auto;
+    background:var(--line2);box-shadow:15px 0 0 var(--line2),30px 0 0 var(--line2);
+    margin-right:30px}
+  .bar span:last-child{margin-left:auto}
+  .feed{padding:14px;display:flex;flex-direction:column;gap:1px}
+  /* le righe della posta: separate da un filo, non da una scatola ciascuna.
+     È così che si presenta una casella vera. */
+  .mail{border-radius:10px;padding:13px 14px;border:1px solid transparent;
+    transition:background var(--t) var(--ease)}
+  .mail+.mail{border-top-color:var(--line)}
+  .mail:hover{background:rgba(255,255,255,.03)}
+  .mail .cat{font-size:10.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--faint)}
+  .mail .tt{margin-top:6px;font-size:15px;line-height:1.36;font-weight:550;letter-spacing:-.15px}
+  .mail .bd{margin-top:5px;font-size:13.5px;line-height:1.5;color:var(--dim)}
+  /* la prima è quella nuova: la dice il bordo rosso a sinistra, non un fondo */
+  .mail.head-m{border-color:var(--line);background:rgba(255,255,255,.028);
+    border-left:2px solid var(--rosso);border-radius:10px}
+  .mail.head-m .cat{color:var(--rosso-lt)}
+  .mail.head-m .tt{font-size:16.5px;font-weight:620;letter-spacing:-.25px}
 
   /* archivio */
   /* auto-fit, non auto-fill: le colonne vuote spariscono, cosi' con un numero
      solo la scheda resta al centro invece di finire spinta a sinistra */
-  .arc{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),340px));gap:18px;justify-content:center}
-  .num{display:block;text-decoration:none;padding:24px 24px 26px;border:1px solid var(--line);border-radius:18px;
-    background:var(--card);transition:border-color .28s,background .28s,transform .28s cubic-bezier(.2,.9,.3,1)}
-  .num:hover{border-color:rgba(240,112,95,.32);background:rgba(255,255,255,.05);transform:translateY(-3px)}
-  .num .d{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet-lt)}
-  .num .t{margin-top:11px;font-size:16px;font-weight:650;line-height:1.38;letter-spacing:-.25px}
-  .num .g{margin-top:14px;font-size:13px;color:var(--dim);display:flex;align-items:center;gap:6px}
-  .num:hover .g{color:var(--violet-lt)}
-  .tutti{margin-top:26px;text-align:center;font-size:14.5px}
-  .tutti a{color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.3);padding-bottom:2px}
-  .tutti a:hover{border-bottom-color:var(--violet-lt)}
-  .arc-empty{margin-top:34px;padding:34px 28px;border:1px dashed var(--line2);border-radius:18px;
-    text-align:center;font-size:15px;color:var(--dim)}
+  .arc{margin-top:42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),340px));gap:14px;justify-content:center}
+  .num{display:block;text-decoration:none;padding:22px 22px 24px;border:1px solid var(--line);border-radius:var(--r);
+    background:var(--card);transition:border-color var(--t) var(--ease),background var(--t) var(--ease)}
+  .num:hover{border-color:var(--line2);background:rgba(255,255,255,.035)}
+  .num .d{font-size:12.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--rosso-lt)}
+  .num .t{margin-top:10px;font-size:17px;font-weight:550;line-height:1.38;letter-spacing:-.2px}
+  .num .g{margin-top:13px;font-size:14px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .tutti{margin-top:24px;text-align:center;font-size:16px}
+  .tutti a{color:var(--rosso-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34);padding-bottom:2px;
+    transition:border-color var(--t) var(--ease)}
+  .tutti a:hover{border-bottom-color:var(--rosso-lt)}
+  .linkc{color:var(--rosso-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34);
+    transition:border-color var(--t) var(--ease)}
+  .linkc:hover{border-bottom-color:var(--rosso-lt)}
+  .arc-empty{margin-top:32px;padding:30px 26px;border:1px dashed var(--line2);border-radius:var(--r);
+    text-align:center;font-size:16px;color:var(--dim)}
 
   /* domande */
-  .faq{margin-top:44px;max-width:760px;margin-left:auto;margin-right:auto;
-    border-top:1px solid var(--line)}
+  .faq{margin-top:42px;max-width:760px;margin-left:auto;margin-right:auto;border-top:1px solid var(--line)}
   .q{border-bottom:1px solid var(--line)}
   .q summary{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
-    padding:24px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;
-    font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:-.2px;transition:color .2s}
-  .q summary:hover{color:var(--violet-lt)}
+    padding:22px 4px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;
+    font-size:17.5px;font-weight:550;color:var(--ink);letter-spacing:-.15px;transition:color var(--t) var(--ease)}
+  .q summary:hover{color:var(--rosso-lt)}
   .q .pm{width:22px;height:22px;flex-shrink:0;position:relative}
   .q .pm::before,.q .pm::after{content:'';position:absolute;top:50%;left:50%;background:var(--dim);
-    border-radius:2px;transform:translate(-50%,-50%);transition:transform .3s cubic-bezier(.2,.9,.3,1),background .2s}
-  .q .pm::before{width:13px;height:1.8px}
-  .q .pm::after{width:1.8px;height:13px}
+    border-radius:2px;transform:translate(-50%,-50%);
+    transition:transform var(--t) var(--ease),background var(--t) var(--ease)}
+  .q .pm::before{width:13px;height:1.6px}
+  .q .pm::after{width:1.6px;height:13px}
   .q[open] .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
-  .q[open] .pm::before,.q[open] .pm::after{background:var(--violet-lt)}
-  .a{overflow:hidden;height:0;transition:height .34s cubic-bezier(.2,.9,.3,1)}
-  .a p{padding:0 4px 26px;font-size:15.2px;line-height:1.72;color:var(--mute);max-width:640px}
+  .q[open] .pm::before,.q[open] .pm::after{background:var(--rosso-lt)}
+  .a{overflow:hidden;height:0;transition:height .3s var(--ease)}
+  .a p{padding:0 4px 24px;font-size:16.5px;line-height:1.68;color:var(--mute);max-width:var(--testo)}
 
   /* chiusura */
-  .end{margin-top:110px;padding:64px 40px;border:1px solid var(--line2);border-radius:26px;text-align:center;
-    background:linear-gradient(160deg,rgba(236,86,71,.13),rgba(201,56,43,.05));position:relative;overflow:hidden}
-  .end::after{content:'';position:absolute;width:560px;height:560px;left:50%;top:-320px;
-    transform:translateX(-50%);pointer-events:none;
-    background:radial-gradient(circle,rgba(236,86,71,.24),transparent 66%);filter:blur(50px)}
-  .end h2{position:relative}
-  .end .sub{position:relative;margin-left:auto;margin-right:auto}
-  .end .form-box{position:relative;margin-top:34px}
+  .end{margin-top:120px;padding:56px 40px;border:1px solid var(--line2);border-radius:16px;text-align:center;
+    background:var(--card)}
+  .end .sub{margin-left:auto;margin-right:auto}
+  .end .form-box{margin-top:30px}
 
-  footer{margin-top:100px;padding:38px 0 56px;border-top:1px solid var(--line);
+  footer{margin-top:100px;padding:34px 0 52px;border-top:1px solid var(--line);
     display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-    font-size:13px;color:var(--faint)}
-  footer a{color:var(--dim);text-decoration:none;transition:color .2s}
-  footer a:hover{color:var(--violet-lt)}
+    font-size:14px;color:var(--faint)}
+  footer a{color:var(--dim);text-decoration:none;transition:color var(--t) var(--ease)}
+  footer a:hover{color:var(--ink)}
   .fl{display:flex;gap:20px;flex-wrap:wrap}
 
-  /* comparse allo scorrimento */
+  /* ═══════════ comparse allo scorrimento ═══════════ */
   /* il testo si vede sempre: l'effetto di entrata lo accende il JS, e solo se c'e' */
   .rise{opacity:1;transform:none}
-  html.anima .rise{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.9,.3,1),transform .7s cubic-bezier(.2,.9,.3,1)}
+  html.anima .rise{opacity:0;transform:translateY(12px);
+    transition:opacity .28s var(--ease),transform .28s var(--ease)}
   html.anima .rise.seen{opacity:1;transform:none}
-  .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+  /* lo sfalsamento fra fratelli lo mette il JS, 60ms l'uno dall'altro */
+  .d1{transition-delay:60ms}.d2{transition-delay:120ms}.d3{transition-delay:180ms}
 
-  /* ═══════════ tablet ═══════════ */
+  /* ═══════════ da 900 in giù ═══════════ */
   @media(max-width:900px){
-    .show{grid-template-columns:1fr;gap:44px}
+    .show{grid-template-columns:1fr;gap:40px}
     .show-t{text-align:center}
     .show-t .sub{margin-left:auto;margin-right:auto}
-    .checks{max-width:420px;margin-left:auto;margin-right:auto;text-align:left}
+    .checks{max-width:440px;margin-left:auto;margin-right:auto;text-align:left}
     .cards{grid-template-columns:1fr 1fr}
     .card:last-child{grid-column:1/-1}
   }
-  /* ═══════════ telefono ═══════════ */
+  /* ═══════════ telefono: è da qui che si guarda per prima cosa ═══════════ */
   @media(max-width:640px){
     :root{--pad:20px}
-    .nav-in{height:58px}
+    body{font-size:17px}
+    .nav-in{height:56px}
     .nlink{display:none}
     .logo-t i{display:none}
-    .hero{padding-top:104px}
-    h1{margin-top:24px;letter-spacing:-.028em;max-width:none}
-    .lead{margin-top:20px}
-    .form-box{margin-top:30px}
-    form{flex-direction:column;gap:11px}
+    .hero{padding-top:100px}
+    h1{margin-top:22px;letter-spacing:-.03em;max-width:none}
+    .lead{margin-top:18px;font-size:17px}
+    .form-box{margin-top:28px}
+    form{flex-direction:column;gap:10px}
     /* in colonna il flex governa l’altezza: va disattivato o il campo si schiaccia */
     .field{flex:0 0 auto;width:100%}
-    input[type=email]{height:54px;font-size:16px}
-    .cta{width:100%;height:54px}
+    input[type=email]{height:52px;font-size:16px}
+    .cta{width:100%;height:52px}
     .fine{flex-direction:column;gap:5px}
     .fine span+span::before{content:none}
-    .strip{margin-top:52px}
-    .sec{padding-top:84px}
-    .cards{grid-template-columns:1fr;gap:13px;margin-top:38px}
-    .card{padding:26px 24px 28px}
+    .strip{margin-top:48px}
+    .sec{padding-top:88px}
+    .cards{grid-template-columns:1fr;gap:12px;margin-top:36px}
+    .card{padding:24px 22px 26px}
     .card:last-child{grid-column:auto}
-    .arc{margin-top:32px}
+    .arc{margin-top:30px}
     .num{max-width:none}
-    .show{margin-top:40px}
-    .phone{max-width:290px}
-    .q summary{padding:20px 2px;font-size:15.5px}
-    .a p{padding-bottom:22px;font-size:14.8px}
-    .end{margin-top:84px;padding:44px 24px;border-radius:22px}
+    .show{margin-top:38px}
+    .bar{height:34px;font-size:12px}
+    .feed{padding:11px}
+    .mail{padding:12px}
+    .mail .tt{font-size:14.5px}
+    .mail.head-m .tt{font-size:15.5px}
+    .q summary{padding:19px 2px;font-size:16.5px}
+    .a p{padding-bottom:20px;font-size:16px}
+    .end{margin-top:88px;padding:40px 22px}
     footer{margin-top:76px;flex-direction:column;text-align:center;gap:14px}
   }
   @media(max-width:380px){
-    .badge{font-size:11.5px;padding:6px 12px 6px 9px}
-    .logo-t{font-size:13.5px}
+    .badge{font-size:13px;padding:6px 12px 6px 10px}
+    .logo-t{font-size:14px}
   }
   /* ═══════════ chi non vuole animazioni ═══════════ */
+  /* non si attenuano: si spengono. Compreso il nastro che scorre da solo. */
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
-      transition-duration:.001ms!important}
-    .rise{opacity:1;transform:none}
-    .mail{opacity:1;transform:none}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rise{opacity:1!important;transform:none!important}
+    .track{animation:none!important}
   }
 </style>
 </head>
 <body>
-<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-<div class="mesh"></div><div class="grain"></div>
+<div class="bg" aria-hidden="true"></div>
 
 <nav class="nav" id="nav">
   <div class="wrap nav-in">
@@ -489,7 +490,7 @@
       <div class="eyebrow rise">Archivio</div>
       <h2 class="rise d1">Guarda com’è prima di iscriverti.</h2>
       <p class="sub rise d2">Ogni numero resta online per sempre, al suo indirizzo. Trovi sempre l’ultimo
-        <a href="ultimo/" style="color:var(--violet-lt);text-decoration:none;border-bottom:1px solid rgba(245,132,122,.34)">a questo link</a>.</p>
+        <a href="ultimo/" class="linkc">a questo link</a>.</p>
     </div>
     <div class="arc" id="arc" hidden></div>
     <p class="tutti rise" id="tutti" hidden><a href="archivio/">Vedi tutti i numeri &nbsp;&rarr;</a></p>
@@ -582,7 +583,15 @@
   setTimeout(function(){ elementi.forEach(function(e){ e.classList.add('seen'); }); }, 2000);
   if ('IntersectionObserver' in window){
     var occhio = new IntersectionObserver(function(voci){
-      voci.forEach(function(v){ if (v.isIntersecting){ v.target.classList.add('seen'); occhio.unobserve(v.target); } });
+      // gli elementi che entrano insieme entrano a scaglioni di 60ms, nell'ordine
+      // in cui stanno nella pagina: e' quel filo di ritardo che fa sembrare la
+      // comparsa una cosa sola invece di cinque cose che partono a caso
+      var dentro = voci.filter(function(v){ return v.isIntersecting; });
+      dentro.forEach(function(v, i){
+        v.target.style.transitionDelay = (i * 60) + 'ms';
+        v.target.classList.add('seen');
+        occhio.unobserve(v.target);
+      });
     }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
     elementi.forEach(function(e){ occhio.observe(e); });
   } else {
@@ -594,14 +603,6 @@
   var scorri = function(){ nav.classList.toggle('on', window.scrollY > 12); };
   scorri(); window.addEventListener('scroll', scorri, { passive:true });
 
-  /* ── luce che segue il mouse sulle carte ── */
-  document.querySelectorAll('.card').forEach(function(c){
-    c.addEventListener('pointermove', function(e){
-      var r = c.getBoundingClientRect();
-      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
 
   /* ── domande: apertura con altezza animata, senza salti ── */
   document.querySelectorAll('.q').forEach(function(q){
