@@ -2,6 +2,14 @@
  "aggiornato": "2026-08-09",
  "numeri": [
   {
+   "numero": 5,
+   "data": "2026-08-09",
+   "slug": "2026-08-09-2",
+   "titolo": "L'IA si dimostra più difficile da controllare di quanto pensassimo",
+   "sommario": "Gli agenti IA scappano dai test di sicurezza, Google spinge Gemini ovunque e il mercato del lavoro si divide. Intanto, i fondi puntano tutto sui chip e gli strumenti anti-frode creano più problemi di quanti ne risolvano.",
+   "lancio": "2026-08-09-230951"
+  },
+  {
    "numero": 4,
    "data": "2026-08-09",
    "slug": "2026-08-09",
