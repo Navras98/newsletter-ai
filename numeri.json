@@ -1,6 +1,14 @@
 {
- "aggiornato": "2026-08-09",
+ "aggiornato": "2026-08-10",
  "numeri": [
+  {
+   "numero": 6,
+   "data": "2026-08-10",
+   "slug": "2026-08-10",
+   "titolo": "Robot cinesi in borsa, chip sotto osservazione e modelli lingua in crescita",
+   "sommario": "Cinque notizie dal fronte dell'IA e della tecnologia cinese: dalla prima IPO di un produttore di robot umanoidi all'uso record dei modelli di linguaggio, passando per Apple che testa chip di memoria cinesi e un avanzamento nei computer quantistici ottici.",
+   "lancio": "2026-08-10-163221"
+  },
   {
    "numero": 5,
    "data": "2026-08-09",
