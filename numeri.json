@@ -1,6 +1,14 @@
 {
- "aggiornato": "2026-08-10",
+ "aggiornato": "2026-08-12",
  "numeri": [
+  {
+   "numero": 7,
+   "data": "2026-08-12",
+   "slug": "2026-08-12",
+   "titolo": "Modelli, centri dati, valanghe di utenti: la corsa all'IA si allarga su ogni fronte",
+   "sommario": "Cinque notizie che disegnano una settimana intensa: una startup cinese punta all'Ipo, Google raggiunge un miliardo di utenti, un ex capo di Qwen si ricicla negli agenti, Alibaba Cloud accorcia i tempi per i data center, e un altro executive lascia OpenAI.",
+   "lancio": "2026-08-12-111929"
+  },
   {
    "numero": 6,
    "data": "2026-08-10",
