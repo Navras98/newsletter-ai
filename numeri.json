@@ -1,6 +1,14 @@
 {
- "aggiornato": "2026-08-12",
+ "aggiornato": "2026-08-14",
  "numeri": [
+  {
+   "numero": 8,
+   "data": "2026-08-14",
+   "slug": "2026-08-14",
+   "titolo": "La velocità diventa merce e il prezzo si fa algoritmo",
+   "sommario": "OpenAI lancia un'API ultrarapida e registra ricordi stratosferici, ma intanto Pechino e le startup cinesi stanno cambiando le regole del gioco. Dalla guerra dei prezzi ai watermark attivabili, l'IA si trasforma in un servizio pubblico con orari e tariffe.",
+   "lancio": "2026-08-14-191522"
+  },
   {
    "numero": 7,
    "data": "2026-08-12",
