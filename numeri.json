@@ -1,6 +1,14 @@
 {
- "aggiornato": "2026-08-14",
+ "aggiornato": "2026-08-16",
  "numeri": [
+  {
+   "numero": 9,
+   "data": "2026-08-16",
+   "slug": "2026-08-16",
+   "titolo": "Aperto o chiuso, l'IA si sta ripartendo: modelli, aziende e robot",
+   "sommario": "Meta lancia un modello open-weight e acquisisce un'azienda chiusa, Tim O’Reilly spiega perché l’open source conta, Twitch rivela come i dati diventano addestramento, e un robot cinese batte un record americano. Cinque mosse che disegnano la nuova mappa dell'intelligenza artificiale.",
+   "lancio": "2026-08-16-110156"
+  },
   {
    "numero": 8,
    "data": "2026-08-14",
